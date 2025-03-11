@@ -58,7 +58,7 @@ class Blog(BaseModle):
 class Like(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='blog_like')
-    create = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'user {self.user.id} like blog {self.blog.id}'
@@ -67,4 +67,12 @@ class Like(models.Model):
     class Meta:
         verbose_name = 'لایک'
         verbose_name_plural = 'لایک ها'
+
+
+class Follow(models.Model):
+    follower = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='followers')
+    following = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='followings')
+    created = models.DateTimeField(auto_now_add=True)
     
+    def __str__(self):
+        return f'user {self.follower.phone} follow {self.following.phone}'

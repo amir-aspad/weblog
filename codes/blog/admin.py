@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Blog, Category, Like
+from .models import Blog, Category, Like, Follow
 
 
 @admin.register(Blog)
@@ -24,3 +24,8 @@ class BlogAdmin(admin.ModelAdmin):
 @admin.register(Like)
 class LikeAdmin(admin.ModelAdmin):
     raw_id_fields = ('user', 'blog')
+
+
+@admin.register(Follow)
+class FollowAdmin(admin.ModelAdmin):
+    raw_id_fields = ('follower', 'following')
