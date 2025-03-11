@@ -1,0 +1,103 @@
+/* globals */
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #0d0d0d;
+    --accent: #00fcdb;
+    --text-color: #a8acb7;
+    --button-color: #3500fc;
+  }
+  
+  h1{
+    font-size: 100px;
+    line-height: 94px;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+  h2{
+    font-size: 54px;
+    line-height: 60px;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  h3{
+    font-size: 36px;
+    line-height: 60px;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  h4{
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  h5{
+    font-size: 22px;
+    line-height: 22px;
+  }
+  h6{
+    font-size: 20px;
+    line-height: 22px;
+  }
+  p{
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .padding-top{
+    padding-top: 100px;
+  }
+  .padding-bottom{
+    padding-bottom: 100px;
+  }
+  .generic-btn a ,.generic-btn button{
+    font-size: 18px;
+    line-height: 30px;
+    padding: 15px 41px;
+    border-radius: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--primary-color);
+    background: var(--button-color);
+    transition: .4s ease-in-out;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+  }
+  span.error {
+    padding-top: 4px;
+    display: block;
+    color: red;
+  }
+  .generic-btn button{
+    border: none;
+    cursor: pointer;
+  }
+  .generic-btn a:hover,
+  .generic-btn button:hover{
+    color: var(--button-color);
+    transform: translateY(-5px);
+    background: var(--primary-color);
+  }
+  .bg-light-black{
+    background: #0d0d0d;
+  }
+  .bg-dark-black{
+    background: #000;
+  }
+  .wrapper{
+    max-width: 1824px;
+    margin: 0 auto;
+  }
+  .wrapper2{
+      max-width: 1296px;
+      margin: 0 auto;
+  }
+  a:hover, button:hover input {
+    outline: none;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  /* globals */

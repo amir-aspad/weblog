@@ -1,0 +1,2258 @@
+
+
+
+@media only screen and (max-width:1824px) {
+    .about-banner .banner-left-sec{
+        text-align: right;
+    }
+}
+@media only screen and (max-width:1824px) {
+    .wrapper {
+        padding: 0 15px;
+    }
+
+}
+@media only screen and (max-width:1600px) {
+    .gallery-images-box {
+        grid-template-columns: repeat(4,1fr);
+    }
+    .gallery-item .images img{
+        width: auto;
+    }
+    .design-con {
+        padding-bottom: 165px;
+    }
+    .generic-list ul {
+        margin-bottom: 45px;
+    }
+    .design-box-content span {
+        margin-bottom: 12px;
+    }
+    .design-box-content h2 {
+        margin-bottom: 18px;
+    }
+    .design-box-content p {
+        margin-bottom: 30px;
+    }
+    .index2-banner-sec .banner-left-sec h1 {
+        margin-bottom: 32px;
+    }
+    .about-index-img2:after {
+        right: -62px;
+    }
+    .banner-sec {
+        height: 100%;
+        padding: 215px 0 0 140px;
+    }
+    .banner-sec::after {
+        background-size: contain;
+        width: 60%;
+        height: 700px;
+        right: 0px;
+    }
+    h1 {
+        font-size: 70px;
+        line-height: 74px;
+    }
+    .banner-left-sec p {
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 35px;
+    }
+    h2 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .service-slider-sec .generic-title {
+        width: 60%;
+        margin-bottom: 45px;
+    }
+    .sponsers-sec ul li {
+        margin: 0 9px;
+      }
+      .reviews-section .owl-carousel .owl-nav button.owl-prev {
+        left: -60px;
+      }
+      .reviews-section .owl-carousel .owl-nav button.owl-next {
+        right: -60px;
+      }
+}
+@media only screen and (max-width:2800px){
+    .swiper-wrapper figure img {
+        width: 100%;
+    }
+    h4 {
+        font-size: 19px;
+    }
+    .about-banner .banner-left-sec span {
+        margin-bottom: 20px;
+    }
+    .design-con {
+        padding-bottom: 50px;
+    }
+    .testimonial-content figure {
+        margin-bottom: 40px;
+    }
+    .blog-post2 .generic-title span {
+        margin-bottom: 10px;
+    }
+    .blog-post2 .generic-title h2 {
+        margin-bottom: 45px;
+    }
+    .cilent-logo {
+        padding-top: 80px;
+    }
+    .testimonial-content p {
+        font-size: 18px;
+        line-height: 40px;
+        margin-bottom: 32px;
+        
+    }
+    .design-con:after {
+        height: 1056px;
+    }
+    .gallery-section .generic-title {
+        margin-bottom: 38px;
+    }
+    .blog-post-content-box figure img {
+        width: 100%;
+    }
+    .testimonial-slider .generic-title h2 {
+        margin-bottom: 70px;
+    }
+    .testimonial-slider {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    .index2-banner-sec {
+        padding-top: 260px;
+        padding-bottom: 280px;
+    }
+    .home-price-box-item.plan-box {
+        margin-bottom: 35px;
+        padding: 32px 38px 22px;
+    }
+    .generic-list ul li {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 28px;
+        
+    }
+    .home-price-con {
+        padding-bottom: 100px;
+    }
+    .home-price-lft-con > span {
+        margin-bottom: 16px;
+   
+    }
+    .home-price-rt-con .generic-btn a {
+        padding: 12px 31px 13px;
+    }
+    .plan-box ul {
+        margin-bottom: 28px;
+    }
+    h3 {
+        font-size: 34px;
+        line-height: 58px;
+    }
+    .home-price-con .vedio-img img{
+        width: 100%;
+    }
+    .index3-banner-sec {
+        padding-top: 150px;
+        padding-bottom: 160px;
+    }
+    .collection-section2 .design-service {
+        gap: 15px;
+    }
+    h1 {
+        font-size: 56px;
+        line-height: 60px;
+    }
+    .about-index-con {
+        padding-bottom: 280px;
+    }
+    .title-con {
+        padding: 110px 0 200px;
+    }
+    .box-video .bg-video, .bg-video::after, .video-container iframe {
+        height: 400px;
+    }
+    .box-video .bt-play {
+        width: 120px;
+        height: 120px;
+        background-size: contain;
+    }
+    .footer-box li button {
+        height: 49px;
+    }
+    .home-footer {
+        padding-top: 120px;
+    }
+    .footer-box.address-box h4 {
+        margin-bottom: 34px;
+    }
+    .footer-box li input {
+        padding: 20px 20px 20px 20px;
+    }
+    .about-index-img2:after {
+        right: 28px;
+    }
+    .wrapper{
+        padding: 0 15px;
+    }
+
+    .about-index-con {
+        padding-bottom: 300px;
+    }
+    .about-index-img2 {
+        top: 150px;
+    }
+    .title-con {
+        padding: 124px 0 220px;
+    }
+    h2 {
+        font-size: 25px;
+        line-height: 46px;
+    }
+    .collection-section2-box {
+        grid-template-columns: 28% 37.5% 32%;
+    }
+    .box-video .bg-video,.bg-video::after,.video-container iframe {
+        height: 500px;
+    }
+    .about-index-img:after {    
+        width: 800px;
+        height: 900px;
+        background-size: contain;
+    }
+    .faq-content .card-header h5 button {
+        font-size: 22px;
+        padding: 0 34px 20px;
+        text-align: right;
+    }
+    .Solution-con .generic-title h2 {
+        margin-bottom: 150px;
+    }
+    .sponsers-sec {
+        padding-top: 180px;
+    }
+    #accordion .card-body {
+        padding: 0 34px 26px;
+        text-align: right;
+    }
+    .banner-sec.about-banner {
+        padding: 140px 0 150px;
+    }
+    .faq-box {
+        gap: 122px;
+    }
+    .banner-review-box {
+        bottom: 30px;
+        width: 164px;
+        min-height: 164px;
+    }
+    .faq-img img {
+        width: 100%;
+    }
+    .banner-review-box .counting-box {
+        font-size: 50px;
+        line-height: 60px;
+        margin-bottom: 4px;
+    }
+    .faq-con .generic-title h2 {
+        margin-bottom: 80px;
+    }
+    .faq-con {
+        padding-top: 160px;
+        padding-bottom: 160px;
+    }
+    .Solution-box-content a h3 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+    .home-price-con .generic-title h2 {
+        margin-bottom: 70px;
+    }
+    .home-price-con .generic-title span {
+        margin-bottom: 10px;
+    }
+    .Solution-con {
+        padding-bottom: 170px;
+    }
+    .service-collection {
+        padding-bottom: 170px;
+    }
+    .collection-box figure {
+        margin-bottom: 28px;
+    }
+    .collection-box h4 {
+        margin-bottom: 10px;
+    }
+    .collection-section .generic-title {
+        margin-bottom: 50px;
+    }
+    .generic-title span {
+        margin-bottom: 10px;
+    }
+    .sub-banner-img img {
+        width: 100%;
+    }
+    .sub-banner-title h1 {
+        font-size: 50px;
+        line-height: 56px;
+        margin-bottom: 16px;
+    }
+    .sub-banner-title span {
+        margin-bottom: 18px;
+    }
+    .sub-banner-title p {
+        padding: 0 42px;
+    }
+    .banner-sec.about-banner.pricing-banner.team-banner {
+        padding: 200px 0 120px;
+    }
+    .member-box figure img {
+        width: 100%;
+    }
+    .team-banner .generic-title {
+        margin-bottom: 80px;
+    }
+    .team-banner .generic-title span {
+        margin-bottom: 20px;
+    }
+    .team-banner .member-box figure {
+        margin-bottom: 24px;
+    }
+    .banner-sec.about-banner.pricing-banner {
+        padding: 200px 0 180px;
+    }
+    .feature-section .generic-title span {
+        margin-bottom: 20px;
+    }
+    .plan-box .plan-txt {
+        margin-bottom: 24px;
+    }
+    .feature-section {
+        padding: 150px 0px;
+    }
+    .feature-section .generic-title {
+        margin-bottom: 75px;
+    }
+    .plan-box {
+        padding: 65px 30px;
+    }
+    .contact-form-box form {
+        padding: 48px 68px;
+    }
+    .contact-form-box form h3 {
+        margin-bottom: 20px;
+    }
+    .contact-form-box form ul li {
+        margin-bottom: 12px;
+    }
+    .contact-details ul li {
+        font-size: 22px;
+        line-height: 34px;
+        margin-bottom: 50px;
+        padding-left: 66px;
+    }
+    .contact-section .generic-title {
+        margin-bottom: 90px;
+    }
+    .social-box{
+        display: none;
+    }
+    .about-banner .banner-right-sec img{
+        width: 100%;
+    }
+    .visual-graphics-box .about-details-box ul li {
+        font-size: 20px;
+        line-height: 40px;
+    }
+    .visual-graphics-box .generic-title span {
+        margin-bottom: 10px;
+    }
+    .visual-graphics-box .about-details-box p {
+        margin-bottom: 20px;
+    }
+    .visual-graphics-box .about-details-box ul {
+        margin-bottom: 35px;
+    }
+    .team-section .blog-text-con {
+        padding: 28px 40px;
+    }
+    .team-section .blog-text-con span {
+        margin-bottom: 18px;
+    }
+    .about-details-box .generic-title {
+        margin-bottom: 18px;
+    }
+    .banner-sec {
+        padding: 185px 0 0 130px;
+    }
+    h1 {
+        font-size: 60px;
+        line-height: 64px;
+    }
+    .banner-left-sec p {
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 24px;
+    }
+    .banner-sec::after {
+        left: 0;
+    }
+    .reviews-section .owl-carousel .owl-dots {
+        margin-top: 20px;
+    }
+    #owlslider .owl-nav {
+        margin-top: 20px;
+    }
+    .padding-bottom {
+        padding-bottom: 80px;
+    }
+    .padding-top {
+        padding-top: 80px;
+    }
+    .collection-box {
+        padding: 36px 21px 32px;
+    }
+    .wrapper2{
+        padding: 0 15px;
+    }
+    .reviews-section .owl-carousel .owl-nav button.owl-prev, .reviews-section .owl-carousel .owl-nav button.owl-next {
+        position: relative;
+    }
+    .sponsers-sec ul li {
+        margin: 0 7px;
+    }
+    .blog-inner-box img {
+        width: 100%;
+    }
+    .tabset {
+        margin-bottom: 0;
+    }
+}
+@media only screen and (max-width:1199px){
+    .home-gallery-section .gallery-images-box .gallery-container:nth-child(3) .gallery-item img {
+        width: 344px;
+        height: 300px;
+    }  
+    .sponsers-sec {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .not-found-title h2 {
+        font-size: 180px;
+        line-height: 180px;
+        margin-bottom: 20px;
+    }
+    .not-found-title p {
+        margin-bottom: 32px;
+    }
+    .index2-navbar-sec.header-con3 {
+        padding: 20px 0;
+    }
+    .banner-sec.about-banner::before {
+        top: -145px;
+        height: 800px;
+        background-size: contain;
+    }
+    .team-section .generic-title span {
+        margin-bottom: 10px;
+    }
+    .team-section .generic-title {
+        margin-bottom: 50px;
+    }
+    .visual-graphics-box {
+        padding-bottom: 180px;
+    }
+    .service-slider-sec .generic-title {
+        width: 70%;
+    }
+    .index-gallery .w-1{
+        grid-column: span 1;
+    }
+    .index-gallery .h-2 {
+        grid-row: span 2;
+    }
+    .gallery-second-tab, .gallery-third-tab, .gallery-fourth-tab {
+        grid-template-columns: repeat(3,1fr);
+    }
+    .testimonial-slider {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .login-btn {
+        padding: 12px 24px;
+    }
+    .testimonial-content p {
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 24px;
+    }
+    .blog-admin {
+        margin-bottom: 9px;
+    }
+    .blog-post2 .generic-title h2 {
+        margin-bottom: 58px;
+    }
+    .blog-post2 .generic-title span {
+        margin-bottom: 10px;
+    }
+    .testimonial-content figure {
+        margin-bottom: 25px;
+    }
+    .testimonial-slider .generic-title h2 {
+        margin-bottom: 60px;
+    }
+    .home-price-lft-con > span {
+        margin-bottom: 10px;
+    }
+    .home-price-box-item.plan-box {
+        grid-template-columns: 50% 46%;
+        gap: 15px;
+    }
+    .home-price-rt-con .generic-btn a {
+        padding: 12px 31px 13px;
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .plan-box ul li {
+        font-size: 14px;
+    }
+    .design-box-content h2 {
+        margin-bottom: 15px;
+    }
+    .design-con:after {
+        height: 1010px;
+    }
+    .plan-box ul {
+        margin-bottom: 20px;
+    }
+    .home-price-con .generic-title h2 {
+        margin-bottom: 60px;
+    }
+    .home-price-box {
+        gap: 52px;
+    }
+    .generic-list ul li {
+        font-size: 20px;
+        line-height: 26px;
+        margin-bottom: 20px;
+    }
+    .design-box {
+        gap: 28px;
+    }
+    .design-box-content .generic-btn a {
+        padding: 14px 35px 12px;
+    }
+    .generic-list ul {
+        margin-bottom: 35px;
+    }
+    .index2-banner-sec {
+        padding-top: 220px;
+        padding-bottom: 250px;
+    }
+    .index2-banner-sec .banner-left-sec h1 {
+        margin-bottom: 24px;
+    }
+    .index2-navbar-sec {
+        padding: 0 0 16px;
+    }
+    .index3-banner-sec {
+        padding-top: 140px;
+        padding-bottom: 150px;
+    }
+    .title-con {
+        padding: 114px 0 210px;
+    }
+    .footer-box ul li {
+        margin-bottom: 12px;
+    }
+    .box-video .bg-video, .bg-video::after, .video-container iframe {
+        height: 400px;
+    }
+    .footer-box h4 {
+        margin-bottom: 36px;
+    }
+    .footer-logo figure {
+        margin-bottom: 40px;
+    }
+    .footer-logo p {
+        margin-bottom: 23px;
+    }
+    .home-footer {
+        padding-top: 100px;
+    }    
+    .index3-banner-sec .banner-left-sec h1 {
+        margin-bottom: 12px;
+    }
+    .about-details-box .generic-title span {
+        margin-bottom: 15px;
+    }
+    .about-details-box p {
+        margin-bottom: 35px;
+    }
+    .about-details-box .generic-btn a {
+        height: auto;
+    }
+    h2 {
+        font-size: 30px;
+        line-height: 42px;
+    }
+    .about-index-img:after {
+        top: -266px;
+    }
+    .generic-btn a {
+        padding: 12px 34px 13px;
+    }
+    .about-index-img2:after{
+        bottom: 0;
+    }
+    .about-index-img:after {
+        width: 700px;
+        height: 500px;
+    }
+    .banner-left-sec p {
+        margin-bottom: 20px;
+    }    
+    .banner-sec.about-banner {
+        padding: 140px 0 120px;
+    }
+    .Solution-box-content a h3 {
+        font-size: 26px;
+        line-height: 34px;
+        padding: 0 52px;
+    }
+    .banner-review-box .counting-box {
+        font-size: 46px;
+        line-height: 50px;
+        margin-bottom: 4px;
+    }
+    .banner-review-box {
+        width: 158px;
+        min-height: 158px;
+    }
+    .faq-content .card {
+        margin-bottom: 22px;
+    }
+    .faq-box {
+        gap: 82px;
+    }
+    .faq-content .card-header h5 button {
+        font-size: 20px;
+        padding: 0 34px 12px;
+    }
+    #accordion .card-body {
+        padding: 0 34px 22px;
+    }
+    .service-collection {
+        padding-bottom: 130px;
+    }
+    .Solution-con {
+        padding-bottom: 130px;
+    }
+    .faq-con {
+        padding-top: 140px;
+        padding-bottom: 140px;
+    }
+    .Solution-con .generic-title h2 {
+        margin-bottom: 120px;
+    }
+    .collection-section .generic-title {
+        margin-bottom: 45px;
+    }
+    .sub-banner-title h1 {
+        font-size: 44px;
+        line-height: 52px;
+        margin-bottom: 10px;
+    }
+    .sub-banner-title span {
+        margin-bottom: 14px;
+    }
+    .sub-banner-title p {
+        padding: 0 30px;
+    }
+    .banner-sec.about-banner.pricing-banner.team-banner {
+        padding: 180px 0 100px;
+    }
+    .team-banner .generic-title {
+        margin-bottom: 70px;
+    }
+    .team-banner .generic-title span {
+        margin-bottom: 18px;
+    }
+    .team-banner .row {
+        gap: 48px 0;
+    }
+    .team-banner .member-box figure {
+        margin-bottom: 20px;
+    }
+    .feature-section {
+        padding: 130px 0px;
+    }
+    .feature-section .generic-title {
+        margin-bottom: 65px;
+    }
+    .feature-section {
+        padding: 110px 0px;
+    }
+    .feature-section .generic-title span {
+        margin-bottom: 10px;
+    }
+    .plans-section .generic-title {
+        margin-bottom: 55px;
+    }
+    .plan-box .plan-txt {
+        margin-bottom: 14px;
+    }
+    .plan-box .price {
+        font-size: 30px;
+        line-height: 52px;
+        margin-bottom: 18px;
+    }
+    .pricing-banner .plan-box ul {
+        margin-bottom: 28px;
+    }
+    .contact-section .generic-title {
+        margin-bottom: 70px;
+    }
+    .contact-details ul li i {
+        font-size: 40px;
+    }
+    .contact-form-box form {
+        padding: 38px 40px;
+    }
+    .contact-details ul li {
+        font-size: 20px;
+        line-height: 32px;
+        margin-bottom:40px;
+        padding-left: 64px;
+    }
+    .home-price-con {
+        padding-bottom: 80px;
+    }
+    .gallery-section .generic-title {
+        margin-bottom: 28px;
+    }
+    h3 {
+        font-size: 30px;
+        line-height: 42px;
+    }
+    .home-price-box-item.plan-box {
+        margin-bottom: 25px;
+        padding: 22px 22px 16px;
+    }
+    .about-banner .banner-left-sec{
+        width: 100%;
+    }
+    .sponsers-sec {
+        padding-top: 70px;
+    }
+    .team-section .blog-text-con {
+        padding: 24px 28px;
+    }
+    .team-section .blog-text-con span {
+        margin-bottom: 12px;
+    }
+    .visual-graphics-box .about-details-box {
+        padding-right: 0;
+    }
+    .visual-graphics-box .about-details-box ul li {
+        font-size: 18px;
+    }
+    .about-collection-sec .collection-box {
+        padding: 32px 20px 22px;
+    }
+    .visual-small-img {
+        right: 0;
+        bottom: -50px;
+    }
+    .h-2 {
+        grid-row: auto;
+    }
+    .w-1 {
+        grid-column: auto;
+    }
+    .gallery-images-box, .gallery-second-tab, .gallery-third-tab, .gallery-fourth-tab {
+        display: grid;
+        grid-auto-rows: auto;
+    }
+    .gallery-images-box{
+        grid-auto-rows: auto;
+    }
+    .h-4 {
+        grid-row: auto;
+    }
+    .gallery-item .images img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+    }
+    .gallery-images-box {
+        grid-template-columns: repeat(3,1fr);
+    }
+    .banner-sec {
+        padding: 160px 0 0 20px;
+    }
+    h1 {
+        font-size: 50px;
+        line-height: 62px;
+    }
+    .banner-left-sec h1 {
+        margin-bottom: 16px;
+        line-height: 65px;
+    }
+    .banner-sec.about-banner.pricing-banner {
+        padding: 180px 0 160px;
+    }
+    .banner-left-sec {
+        width: 558px;
+    }
+    .plans-section .generic-title span,.blogs-section .generic-title span {
+        margin-bottom: 10px;
+    }
+    .plans-section .generic-title {
+        margin-bottom: 45px;
+    }
+    .blogs-section .generic-title {
+        margin-bottom: 45px;
+    }
+    h2 {
+        font-size: 30px;
+        line-height: 48px;
+    }
+    .padding-top {
+        padding-top: 70px;
+    }
+    .padding-bottom {
+        padding-bottom: 70px;
+    }
+    .collection-box figure {
+        margin-bottom: 22px;
+    }
+    .collection-box h4 {
+        margin-bottom: 9px;
+    }
+    .collection-box {
+        padding: 26px 12px;
+    }
+    .about-main-sec img {
+        width: 100%;
+    }
+    .about-details-box .generic-title span {
+        margin-bottom: 14px;
+    }
+    .about-details-box .generic-title {
+        margin-bottom: 14px;
+    }
+    .about-details-box p {
+        margin-bottom: 18px;
+    }
+    .about-index-con {
+        padding-bottom: 280px;
+    }
+    .plan-box ul {
+        margin-bottom: 30px;
+    }
+    .pricing-banner .plan-box ul{
+        padding: 0;
+    }
+   
+    .plan-box {
+        padding: 54px 30px;
+    }
+    .box-video .bg-video {
+        height: 500px;
+    }
+    .video-container iframe {
+        height: 500px;
+    }
+    .reviews-section .profile-box {
+        padding: 65px 35px 60px;
+    }
+    .reviews-section .profile-box p {
+        font-size: 22px;
+        line-height: 32px;
+        margin-bottom: 24px;
+    }
+    h4 {
+        font-size: 22px;
+    }
+    .owl-theme .owl-nav {
+        margin-top: 20px;
+    }
+    .reviews-section .owl-carousel .owl-dots {
+        margin-top: 30px;
+    }
+    .blog-text-con {
+        padding: 27px 20px 33px;
+    }
+    .blog-text-con h4 {
+        margin-bottom: 17px;
+        font-size: 21px;
+    }
+    .reviews-section .owl-carousel .owl-nav button.owl-prev {
+        left: 5px;
+    }
+    .reviews-section .owl-carousel .owl-nav button.owl-next {
+        right: -5px;
+    }
+    .footer-logo figure {
+        margin-bottom: 30px;
+    }
+    .footer-box h4 {
+        margin-bottom: 25px;
+    }
+    .footer-box.address-box h4 {
+        margin-bottom: 20px;
+    }
+    .footer-inner-section {
+        grid-template-columns: 20.2% 16.3% 26% 28%;
+        gap: 30px;
+    }
+    .footer-logo p {
+        margin-bottom: 23px;
+    }
+    .footer-box li button {
+        height: 52px;
+        top: 9px;
+        width: 77px;
+    }
+    .footer-box li input {
+        padding: 22px 15px 22px 96px;
+    }
+    .footer-box li input::placeholder{
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width:991px){
+    .navbar-main-sec .nav-item.dropdown {
+        width: 17.5%;
+    }
+    .navbar-main-sec .nav-item.dropdown a{
+        display: inline-block;
+    }
+    .index2-navbar-sec .login-btn:hover {
+        background: transparent;
+      }
+    .index-page-navbar .login-btn:hover {
+        box-shadow: none;
+        background: var(--accent);
+      }
+    .home-gallery-section .gallery-images-box .gallery-container:nth-child(3) .gallery-item img {
+        width: 249px;
+        height: 248px;
+    }
+    .home-gallery-section .gallery-item .images img {
+        width: 100%;
+        height: auto;
+    }
+   
+    .logo-slider {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .navbar-main-sec .navbar-expand-lg .navbar-nav .dropdown-menu {
+        top: 0;
+        left: 28px;
+        position: relative;
+        background: #fff;        
+    }
+    .navbar-main-sec .dropdown-item {
+        color: #000;
+        border-bottom: 1px solid rgb(0 0 0 / 10%);
+    }
+    .navbar-main-sec .dropdown-item:hover{
+        background: var(--accent);
+    }
+    .footer-box.address-box ul li {
+        font-size: 14px;
+        line-height: 28px;
+        text-align: right;
+    }
+    .footer-box ul li a {
+        font-size: 14px;
+        line-height: 14px;
+    }
+    #button {
+        right: 50px;
+    }
+    .navbar-nav{
+        align-items: baseline;
+    }
+    .not-found-title h2 {
+        font-size: 150px;
+        line-height: 150px;
+    }
+
+    .not-found-title span {
+        font-size: 26px;
+        margin-bottom: 20px;
+        letter-spacing: 8px;
+    }
+    .not-found-title p {
+        margin-bottom: 26px;
+    }
+    .index2-navbar-sec.header-con3 {
+        padding: 16px 0;
+    }
+    .login-btn {
+        padding: 8px 17px;
+    }
+    .login-btn img {
+        margin-right: 0px;
+        width: 14px;
+    }
+    .index2-navbar-sec .login-btn {
+        background: var(--accent);
+        margin-bottom: 24px;
+    }
+    .index-page-navbar .login-btn{
+        margin-bottom: 24px;
+        padding: 9px 24px;
+    }
+    .navbar-right-box {
+        margin-right: 33px;
+      }
+    .navbar-right-box li{
+        width: 100%;
+        text-align: center;
+    }
+    .design-service {
+        grid-template-columns: 48% 48%;
+    }
+    .banner-sec {
+        padding: 125px 0 25px 20px;
+    }
+    .index2-banner-sec {
+        padding-top: 210px;
+        padding-bottom: 180px;
+    }
+    .blog-post2-content {
+        left: 16px;
+        bottom: 12px;
+    }
+    h4 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .blog-post2 .generic-title h2 {
+        margin-bottom: 58px;
+    }
+    .testimonial-content figure {
+        margin-bottom: 18px;
+    }
+    .blog-post2 .generic-title span {
+        margin-bottom: 10px;
+    }
+    .auther-con h5 {
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 3px;
+    }
+    .testimonial-slider .generic-title h2 {
+        margin-bottom: 50px;
+    }
+    .testimonial-content figure {
+        margin-bottom: 25px;
+    }
+    .testimonial-content p br{
+        display: none;
+    }
+    .testimonial-content p {
+        margin-bottom: 20px;
+        padding: 0 100px;
+    }
+    .home-price-con {
+        padding-bottom: 70px;
+    }
+    .home-price-box-item.plan-box {
+        margin-bottom: 25px;
+        padding: 22px 48px;
+    }
+    .home-price-box {
+        gap: 30px;
+        grid-template-columns: 100%;
+    }
+    .home-price-con .vedio-img{
+        text-align: center;
+    }
+    .home-price-con .video-wrap img {
+        width: 80px;
+    }
+    .home-price-con .vedio-img a > img {
+        width: 400px;
+    }
+    .home-price-con .generic-title span {
+        margin-bottom: 14px;
+    }
+    .home-price-con .generic-title h2 {
+        margin-bottom: 50px;
+    }
+    .design-con:after {
+        height: 564px;
+        top: auto;
+        bottom: 0;
+        background-size: contain;
+    }
+    .design-box-content p {
+        padding-right: 92px;
+        margin-bottom: 28px;
+        padding-left: 92px;
+    }
+    .generic-list ul {
+        margin-bottom: 22px;
+        text-align: right;
+        display: inline-block;
+    }
+    .design-box-content{
+        text-align: center;
+    }
+    .design-box {
+        gap: 30px;
+        grid-template-columns: 100%;
+    }
+    .index2-slider .owl-stage .owl-item:nth-child(even) .item {
+        margin-top: -106px;
+    }
+    .home-footer {
+        padding-top: 60px;
+    }
+    .collection-section2-img{
+        grid-column: 1/-1;
+        height: 295px;
+    }
+    .collection-inner-sec{
+        grid-column: 1/-1;
+    }
+    .collection-section2 .design-service {
+        gap: 15px;
+        place-content: center;
+    }
+    .index3-banner-sec {
+        padding-top: 120px;
+        padding-bottom: 130px;
+    }
+    .faq-content .card {
+        margin-bottom: 16px;
+    }
+    .faq-content .card-header h5 button {
+        font-size: 18px;
+        line-height: 24px;
+        padding: 0 34px 10px;
+        white-space: normal;
+    }
+    .Solution-box-content a h3 {
+        font-size: 22px;
+        line-height: 28px;
+        padding: 0 28px;
+    }
+    .faq-box {
+        gap: 42px;
+    }
+    #accordion .card-body {
+        padding: 0 0 16px 34px;
+    }
+    .faq-con .generic-title h2 {
+        margin-bottom: 60px;
+    }
+    .faq-con {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    .service-collection {
+        padding-bottom: 120px;
+    }
+    .Solution-con {
+        padding-bottom: 120px;
+    }
+    .Solution-con .generic-title h2 {
+        margin-bottom: 80px;
+    }
+    .sub-banner-title h1 {
+        font-size: 34px;
+        line-height: 46px;
+        margin-bottom: 5px;
+    }
+    .sub-banner-title span {
+        margin-bottom: 9px;
+    }
+    .sub-banner-title p {
+        padding: 0 24px;
+    }
+    .team-banner .row {
+        gap: 40px 0;
+    }
+    .banner-sec.about-banner.pricing-banner.team-banner {
+        padding: 150px 0 70px;
+    }
+    .team-banner .generic-title {
+        margin-bottom: 60px;
+    }
+    .team-banner .generic-title span {
+        margin-bottom: 12px;
+    }
+    .banner-sec.about-banner.pricing-banner.team-banner {
+        padding: 160px 0 80px;
+    }
+    .banner-sec.about-banner.pricing-banner {
+        padding: 160px 0 120px;
+    }
+    .features-box ul li {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    .feature-section .row{
+        gap: 30px 0;
+    }
+    .contact-details ul li {
+        font-size: 18px;
+        line-height: 30px;
+        margin-bottom: 36px;
+        padding-left: 41px;
+    }
+    .contact-section .generic-title {
+        margin-bottom: 60px;
+    }
+    .team-section .generic-title span {
+        margin-bottom: 10px;
+    }
+    .visual-small-img figure img{
+        width: auto;
+    }
+    .about-details-box ul li figure img {
+        width: auto;
+    }
+    .visual-graphics-box .about-details-box {
+        padding-left: 0;
+    }
+    .visual-graphics-box .about-details-box ul{
+        text-align: right;
+        display: inline-block;
+        margin-bottom: 25px;
+    }
+    .visual-graphics-box .about-details-box ul li figure {
+        top: 8px;
+    }
+    .about-details-box .generic-btn a {
+        height: auto;
+    }
+    .visual-graphics-box {
+        padding-bottom: 60px;
+    }
+    .visual-small-img figure img {
+        width: 200px;
+        margin: 0;
+    }
+    .visual-small-img {
+        right: 100px;
+    }
+    .visual-graphics-box .row{
+        gap: 100px;
+    }
+    .team-section .generic-title {
+        margin-bottom: 50px;
+    }
+    .team-section .row{
+        gap: 30px 0;
+    }
+    .about-banner .banner-right-sec img {
+        width: 400px;
+    }
+    .about-banner .banner-right-sec {
+        padding-left: 0;
+        display: inline-block;
+        position: relative;
+        margin-bottom: 30px;
+    }
+    .banner-review-box .counting-box {
+        font-size: 44px;
+        line-height: 52px;
+    }
+    .about-banner .banner-left-sec {
+        margin-top: 0;
+        padding: 0 92px;
+    }
+    .banner-review-box {
+        left: -35px;
+        bottom: 30px;
+    }
+    .banner-sec.about-banner {
+        height: auto;
+        padding-bottom: 80px;
+        text-align: center;
+    }
+    .navbar-main-sec .navbar-light .navbar-nav .nav-link {
+        margin-right: 33px;
+        margin-left: 33px;
+      }
+      .navbar-main-sec .btn-outline-success {
+        margin-left: 33px;
+        margin-bottom: 20px;
+      }
+      .navbar-right-box li:first-child{
+          display: none;
+      }
+    .wrapper{
+        padding: 0 15px;
+    }
+    .gallery-item .images img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    
+    .navbar-toggler {
+        left: 0;
+        top: 50%;
+        width: 40px;
+        position: absolute;
+        transform: translateY(-50%);
+        height: 40px;
+        border-radius: 50%;
+        background: var(--accent);
+        padding: 10px 8px;
+    }
+    .navbar-toggler-icon{
+        float: left;
+        width: 24px;
+        height: 2px;
+        margin: 2px 0;
+        background: #000;
+    }
+    .navbar-toggler:focus{
+        outline: none;
+    }
+    .navbar-toggler .navbar-toggler-icon:nth-child(1),
+    .navbar-toggler .navbar-toggler-icon:nth-child(3) {
+    -webkit-transition: transform .35s ease-in-out;
+    -moz-transition: transform .35s ease-in-out;
+    -o-transition: transform .35s ease-in-out;
+    transition: transform .35s ease-in-out;
+    }
+    .navbar-toggler:not(.collapsed) .navbar-toggler-icon:nth-child(1) {
+        position: absolute;
+        top: 15px;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg);
+        left: 7px;
+    }
+    .navbar-toggler:not(.collapsed) .navbar-toggler-icon:nth-child(2) {
+    height: 12px;
+    visibility: hidden;
+    background-color: transparent;
+    }
+    .navbar-toggler:not(.collapsed) .navbar-toggler-icon:nth-child(3) {
+        position: absolute;
+        top: 15px;
+        -webkit-transform: rotate(-135deg);
+        -moz-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+        left: 7px;
+    }
+    .navbar-collapse.collapse, .navbar-collapse.collapsing {
+        right: 0;
+        top: 54px;
+        width: 100%;
+        z-index: 999;
+        position: absolute;
+        border-radius: 10px;
+        background: var(--button-color);
+        box-shadow: 3px 3px 46px rgb(93 93 93 / 10%);
+    }
+    .header-con .navbar-dark .navbar-nav {
+        gap: 8px;
+    }
+    .header-con ul.navbar-nav .nav-item {
+        padding: 0 15px;
+    }
+    .header-con .navbar-collapse ul.navbar-nav:first-child .nav-item:first-child {
+        padding-top: 10px;
+    }
+    
+    .header-con ul.navbar-nav .nav-item:last-child {
+        padding-bottom: 10px;
+    }
+    /****************/
+    .sponsers-sec ul li {
+        margin: 0 33px 5px;
+    }
+    .footer-logo figure {
+        margin-bottom: 30px;
+    }
+    .footer-box ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    .footer-logo p {
+        margin-bottom: 18px;
+    }
+    .footer-box h4 {
+        margin-bottom: 24px;
+    }
+    .footer-inner-section {
+        grid-template-columns: 48% 48%;
+    }    
+    h1 {
+        font-size: 46px;
+        line-height: 50px;
+    }
+    .index3-banner-sec .banner-left-sec h1 {
+        margin-bottom: 18px;
+    }
+    .about-index-img:after{
+        display: none;
+    }
+    .title-con .generic-title h2 {
+        padding: 0 54px;
+    }
+    .title-con {
+        padding: 100px 0 200px;
+    }
+    .about-index-img2 {
+        top: 130px;
+    }
+    .about-index-con {
+        padding-bottom: 200px;
+    }
+    .about-index-box {
+        gap: 15px;
+        grid-template-columns: 31.66% 34.5% 31.66%;
+    }
+    .about-index-content {
+        top: 65px;
+    }
+    .banner-left-sec {
+        width: 526px;
+        margin-right: 30px;
+    }
+    .banner-left-sec p {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 14px;
+    }
+    .service-slider-sec .generic-title {
+        width: 84%;
+        margin-bottom: 35px;
+    }
+    h2 {
+        font-size: 20px;
+        line-height: 44px;
+    }
+    .plans-section .generic-title {
+        margin-bottom: 35px;
+    }
+    .padding-bottom {
+        padding-bottom: 50px;
+    }
+    .padding-top {
+        padding-top: 50px;
+    }
+    .generic-title span {
+        margin-bottom: 8px;
+    }
+    .collection-section .generic-title {
+        margin-bottom: 35px;
+    }
+    .collection-inner-sec .row{
+        gap: 30px 0;
+    }
+    .about-main-sec img {
+        width: 350px;
+        margin-bottom: 30px;
+    }
+    .about-main-sec {
+        text-align: center;
+    }
+    .about-details-box {
+        padding-right: 0;
+    }
+    .about-details-box p {
+        margin-bottom: 25px;
+        padding: 0 100px;
+    }
+    .gallery-section .generic-title {
+        margin-bottom: 30px;
+    }
+    .generic-btn a {
+        padding: 13px 32px;
+    }
+    .plans-section .generic-title span {
+        margin-bottom: 8px;
+    }
+    .plans-section .generic-title {
+        margin-bottom: 45px;
+    }
+    
+    h3 {
+        font-size: 30px;
+        line-height: 48px;
+    }
+    .plan-box .plan-txt {
+        margin-bottom: 18px;
+    }
+    .plan-box .price {
+        font-size: 46px;
+        line-height: 60px;
+        margin-bottom: 16px;
+        margin-left: 0;
+    }
+    .feature-section {
+        padding: 90px 0px;
+    }
+    .feature-section .generic-title {
+        margin-bottom: 55px;
+    }
+    .banner-sec.about-banner.pricing-banner {
+        padding: 140px 0 100px;
+    }
+    .generic-btn a {
+        padding: 11px 28px;
+    }
+    .plan-box {
+        padding: 40px 30px;
+    }
+    .box-video .bg-video,.video-container iframe,.bg-video::after {
+        height: 350px;
+    }
+    .box-video .bt-play {
+        width: 100px;
+        height: 100px;
+        transition: all .3s ease-out;
+        background-size: contain;
+    }
+    .reviews-section .profile-box {
+        padding: 50px 20px;
+    }
+    .reviews-section .profile-box p {
+        font-size: 18px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+    .blogs-section .generic-title span {
+        margin-bottom: 8px;
+    }
+    .blogs-section .generic-title {
+        margin-bottom: 35px;
+    }
+}
+@media only screen and (max-width:767px){
+    .home-gallery-section .gallery-images-box .gallery-container:nth-child(3) .gallery-item img {
+        width: 283px;
+        height: 282px;
+    }
+    .generic-btn a, .generic-btn button {
+        padding: 14px 28px;
+    }
+    .contact-form-box form h3 {
+        margin-bottom: 14px;
+    }
+    .contact-details ul li {
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 18px;
+    }
+    .not-found-page {
+        padding-bottom: 100px;
+    }
+    .reviews-section .profile-box {
+        padding: 50px 20px 35px;
+    }
+    
+    .gallery-second-tab, .gallery-third-tab, .gallery-fourth-tab {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .about-details-box p {
+        padding: 0 68px;
+    }
+    .faq-page-con .faq-box {
+        width: 100%;
+    }
+    .not-found-title p {
+        margin-bottom: 20px;
+    }
+    .not-found-title h2 {
+        font-size: 130px;
+        line-height: 130px;
+        margin-bottom: 16px;
+    }
+    .not-found-title p br{
+        display: none;
+    }
+    .banner-sec.about-banner::before {
+        width: 100%;
+        height: 1000px;
+        top: -286px;
+        background-size: contain;
+    }
+    .gallery-section .generic-title {
+        margin-bottom: 22px;
+    }
+    .index2-slider .owl-stage .owl-item:nth-child(even) .item {
+        margin-top: 0;
+    }
+    .glow-img::before{
+        display: none;
+    }
+    .tab-panel {
+        padding: 45px 0;
+    }
+    .index-gallery .gallery-item .images img {
+        object-position: 30%;
+    }
+    .index-gallery .gallery-images-box {
+        grid-template-columns: repeat(3,1fr);
+    }
+    .blog-post2 .generic-title h2 {
+        margin-bottom: 48px;
+    }
+    .blog-post2-box {
+        grid-template-columns: 100%;
+    }
+    .home-price-con {
+        padding-bottom: 60px;
+    }
+    .home-price-con .generic-title h2 {
+        margin-bottom: 50px;
+    }
+    .testimonial-content figure {
+        margin-bottom: 16px;
+    }
+    .testimonial-slider {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .testimonial-content p {
+        margin-bottom: 18px;
+        padding: 0 66px;
+    }
+    .testimonial-slider .generic-title h2 {
+        margin-bottom: 50px;
+    }
+    .home-price-con .generic-title span {
+        margin-bottom: 10px;
+    }
+    .generic-list ul li {
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 16px;
+    }
+    .generic-list ul {
+        margin-bottom: 14px;
+    }
+    .design-service {
+        grid-template-columns: 48% 48%;
+    }
+    .index2-banner-sec {
+        padding-top: 160px;
+        padding-bottom: 55px;
+    }
+    .index2-banner-sec .banner-left-sec h1 {
+        margin-bottom: 16px;
+    }
+    .index3-banner-sec {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .about-index-con .about-index-img figure {
+        text-align: center;
+    }
+    .title-con .generic-title h2 {
+        padding: 0 18px;
+    }
+    .collection-section2-img {
+        height: 275px;
+    }
+    .about-index-img img {
+        width: 300px;
+    }
+    .title-con {
+        padding: 80px 0 180px;
+    }
+    .about-index-img2 {
+        top: 0;
+    }
+    .about-index-con {
+        padding-bottom: 80px;
+    }
+    .about-index-content {
+        top: 0;
+    }
+    .service-collection {
+        padding-bottom: 80px;
+    }
+    .generic-btn a {
+        font-size: 16px;
+        padding: 9px 26px;
+        
+    }
+    .about-index-box {
+        grid-template-columns: 100%;
+    }
+    .faq-img{
+        display: inline-block;
+    }
+    .faq-box-img{
+        text-align: center;
+    }
+    .faq-img .banner-review-box {
+        right: -70px;
+        left: auto;
+    }
+    .faq-img img {
+        width: 300px;
+    }
+    .faq-con .generic-title h2 {
+        margin-bottom: 50px;
+    }
+    .faq-box {
+        grid-template-columns: 100%;
+    }
+    .faq-con {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .Solution-con .generic-title h2 {
+        margin-bottom: 70px;
+    }
+    .Solution-con {
+        padding-bottom: 80px;
+    }
+    .Solution-box-content {
+        bottom: 9px;
+    }
+    .Solution-box-content a h3 {
+        font-size: 20px;
+        line-height: 26px;
+        padding: 0 8px;
+    }
+    .sub-banner-img img {
+        width: 300px;
+    }
+    .sub-banner-title span {
+        margin-bottom: 6px;
+    }
+    .sub-banner-title p {
+        padding: 0 94px;
+    }
+    .sub-banner-title h1 {
+        font-size: 32px;
+        line-height: 44px;
+    }
+    .sub-banner-inner-con {
+        gap: 30px;
+        grid-template-columns: 100%;
+    }
+    .banner-sec.about-banner.pricing-banner.team-banner {
+        padding: 140px 0 60px;
+    }
+    .team-banner .row {
+        gap: 30px 0;
+    }
+    .team-banner .member-box figure {
+        margin-bottom: 16px;
+    }
+    .team-banner .generic-title span {
+        margin-bottom: 10px;
+    }
+    .team-banner .generic-title {
+        margin-bottom: 50px;
+    }
+    .features-box ul li figure img {
+        width: 20px;
+    }
+    .features-box ul li {
+        font-size: 16px;
+        padding-left: 34px;
+    }
+    .contct-form-section .row{
+        gap: 30px;
+    }
+    .generic-title h2 br{
+        display: none;
+    }
+    .contact-section .generic-title {
+        margin-bottom: 50px;
+    }
+    .contact-details ul li i {
+        font-size: 30px;
+        top: 0;
+    }
+    .contact-banner.banner-sec.about-banner::before {
+        height: 503px;
+        top: 88px;
+    }
+    h3 {
+        font-size: 28px;
+        line-height: 44px;
+    }
+    .about-banner .banner-right-sec img {
+        width: 350px;
+    }
+    .visual-small-img figure img {
+        width: 150px;
+        margin: 0;
+    }
+    .visual-small-img {
+        bottom: -20px;
+    }
+    .visual-graphics-box .row {
+        gap: 50px;
+    }
+    .banner-review-box .counting-box {
+        font-size: 44px;
+        line-height: 48px;
+    }
+    .banner-review-box {
+        width: 150px;
+        min-height: 150px;
+    }
+    .banner-sec.about-banner {
+        padding-bottom: 60px;
+    }
+    .about-banner .banner-left-sec span {
+        margin-bottom: 6px;
+    }
+    .about-banner .banner-left-sec h2 {
+        margin-bottom: 12px;
+    }
+    .gallery-images-box {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .banner-sec {
+        padding: 125px 0 25px 20px;
+    }
+    .social-box {
+        left: 20px;
+    }
+    .banner-sec::after {
+        height: 420px;
+    }
+    .padding-top {
+        padding-top: 40px;
+    }
+    .padding-bottom {
+        padding-bottom: 40px;
+    }
+    h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .banner-left-sec p {
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 15px;
+    }
+    .banner-left-sec {
+        width: 400px;
+    }
+    h2 {
+        font-size: 22px;
+        line-height: 40px;
+    }
+    .about-main-sec img {
+        width: 300px;
+        margin-bottom: 30px;
+    }
+    .about-details-box .generic-title {
+        margin-bottom: 10px;
+    }
+    .about-details-box .generic-title span {
+        margin-bottom: 10px;
+    }.about-details-box .generic-btn a {
+        height: auto;
+        min-width: 150px;
+    }
+    .plans-section .generic-title span {
+        margin-bottom: 8px;
+    }
+    .plans-section .wrapper2 > .row{
+        gap: 30px;
+    }
+    .plans-section .generic-title {
+        margin-bottom: 35px;
+    }
+    .box-video .bg-video, .video-container iframe, .bg-video::after {
+        height: 300px;
+    }
+    .blogs-section .row {
+        gap: 30px;
+        padding: 0 50px;
+    }
+    .footer-logo figure {
+        margin-bottom: 20px;
+    }
+    .footer-logo p {
+        margin-bottom: 12px;
+    }
+    .footer-box h4 {
+        margin-bottom: 16px;
+    }
+    .footer-box.address-box h4 {
+        margin-bottom: 14px;
+    }
+}
+@media only screen and (max-width:575px){
+    .navbar-main-sec .nav-item.dropdown {
+        width: 38%;
+      }
+    .home-gallery-section .gallery-item .images img {
+        width: 300px;
+        height: auto;
+    }
+    .home-gallery-section .gallery-images-box .gallery-container:nth-child(3) .gallery-item img {
+        width: 300px;
+        height: auto;
+    }
+    .logo-slider {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .feature-section .row {
+        gap: 12px;
+    }
+    .plans-section .wrapper2 > .row {
+        gap: 20px;
+    }
+    .blogs-section .row {
+        gap: 30px;
+        padding:0;
+    }
+    .team-section .row {
+        padding: 0 20px;
+    }
+    .not-found-title p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .index-page-navbar .login-btn {
+        padding: 8px 20px;
+    }
+    #button {
+        right: 36px;
+    }
+    .tabset > label {
+        padding: 0;
+        margin: 0 5px;
+        font-size: 14px;
+    }
+    .sponsers-sec ul li img {
+        width: 164px;
+    }
+    .blogs-section .row {
+        gap: 20px;
+    }
+    .about-details-box p {
+        padding: 0 12px;
+    }
+    .not-found-title h2 {
+        font-size: 100px;
+        line-height: 100px;
+        margin-bottom: 16px;
+    }
+    .not-found-title span {
+        font-size: 20px;
+        margin-bottom: 14px;
+        letter-spacing: 3px;
+    } 
+    .member-box{
+        width: 330px;
+        margin: 0 auto;
+    }
+    .Solution-con {
+        padding-bottom: 50px;
+    }
+    .contact-details ul li {
+        margin-bottom: 26px;
+    }
+    .service-slider-sec .owl-carousel .owl-dots {
+        margin-top: 35px;
+    }
+    .footer-box li input {
+        padding: 18px 15px 18px 96px;
+    }
+    .footer-box li button {
+        height: 42px;
+        font-size: 14px;
+    }
+    .gallery-second-tab, .gallery-third-tab, .gallery-fourth-tab {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .home-price-con .vedio-img a > img {
+        width: 100%;
+    }
+    .testimonial-slider .carousel-control-next img, .testimonial-slider .carousel-control-prev img {
+        width: 34px;
+    }
+    .testimonial-slider .carousel-control-next, .testimonial-slider .carousel-control-prev {
+        position: relative;
+        top: 22px;
+        display: inline-block;
+        left: 50%;
+        transform: translatex(-109%);
+    }
+    .testimonial-content p {
+        font-size: 18px;
+        margin-bottom: 18px;
+        padding: 0 10px;
+    }
+    .testimonial-slider .generic-title h2 {
+        margin-bottom: 40px;
+    }
+    .testimonial-slider .carousel-control-next, .testimonial-slider .carousel-control-prev {
+        position: relative;
+    }
+    .index-gallery .gallery-images-box {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .index-gallery .tabset > label {
+        padding: 0;
+        margin: 0 5px;
+    }
+    .home-price-box-item.plan-box {
+        grid-template-columns: 100%;
+        gap: 0;
+        text-align: center;
+    }
+    .plan-box ul {
+        margin-bottom: 20px;
+        text-align: right;
+    }
+    .design-box-content .generic-btn a {
+        padding: 10px 30px 10px;
+    }
+    .design-service .collection-box {
+        background: #0d0d0d;
+    }
+    .design-service {
+        grid-template-columns: 100%;
+    }
+    .design-box-content p {
+        padding-right: 0;
+        margin-bottom: 24px;
+        padding-left: 0;
+    }
+    .generic-list ul li {
+        font-size: 16px;
+    }
+    .index2-banner-sec {
+        padding-top: 150px;
+        padding-bottom: 55px;
+    }
+    .index3-banner-sec {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .banner-left-sec p {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 15px;
+        color: #fff;
+        text-align: center;
+    }
+    .index3-banner-sec .banner-left-sec p {
+        padding: 0 30px;
+    }
+    .collection-section2 .design-service {
+        grid-template-columns: 100%;
+    }
+    .title-con .generic-title h2 {
+        padding: 0;
+    }
+    .about-details-box .generic-btn a {
+        min-width: 125px;
+    }
+    .title-con {
+        padding: 60px 0 160px;
+    }
+    .index3-banner-sec .banner-left-sec {
+        width: 100%;
+    }
+    .banner-sec.about-banner {
+        padding: 120px 0 70px;
+    }
+    .sub-banner-img img {
+        width: 100%;
+    }
+    .faq-con .generic-title h2 {
+        margin-bottom: 45px;
+    }
+    .faq-img .banner-review-box {
+        right: 0;
+        left: auto;
+    }
+    .faq-img img {
+        width: 100%;
+    }
+    .faq-con {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .Solution-con .generic-title h2 {
+        margin-bottom: 50px;
+    }
+    .Solution-box {
+        grid-template-columns: 100%;
+    }
+    .sub-banner-title p {
+        padding: 0 15px;
+    }
+    .sub-banner-title h1 {
+        font-size: 28px;
+        line-height: 38px;
+    }
+    .banner-sec.about-banner::before{
+        display: none;
+    }
+    .team-banner .member-box figure {
+        margin-bottom: 12px;
+    }
+    .team-banner .generic-title {
+        margin-bottom: 40px;
+    }
+    .banner-sec.about-banner.pricing-banner.team-banner {
+        padding: 130px 0 55px;
+    }
+    .banner-sec.about-banner.pricing-banner {
+        padding: 140px 0 80px;
+    }
+    .feature-section .generic-title {
+        margin-bottom: 45px;
+    }
+    .feature-section {
+        padding: 80px 0px;
+    }
+    .plan-box .plan-txt {
+        margin-bottom: 14px;
+    }
+    .contact-section .generic-title {
+        margin-bottom: 40px;
+    }
+    .contact-form-box form {
+        padding: 30px 20px;
+    }
+    .about-banner .banner-right-sec img {
+        width: 250px;
+    }
+    .banner-review-box .counting-box {
+        font-size: 36px;
+        line-height: 40px;
+        margin-bottom: 0;
+    }
+    .about-banner .banner-left-sec {
+        padding: 0;
+        text-align: center;
+    }
+    .visual-small-img {
+        right: 0;
+    }
+    .visual-graphics-box .about-details-box ul li {
+        font-size: 16px;
+        line-height: 36px;
+        padding-left: 30px;
+        text-align: right;
+    }
+    .about-details-box ul li figure img {
+        width: 20px;
+    }
+    .visual-graphics-box .about-details-box p br{
+        display: none;
+    }
+    .banner-review-box {
+        width: 120px;
+        min-height: 120px;
+        left: -35px;
+        bottom: 0;
+    }
+    .banner-review-box p {
+        font-size: 16px;
+    }    
+    .gallery-images-box {
+        grid-template-columns: repeat(1,1fr);
+    }
+    h1 {
+        font-size: 32px;
+        line-height: 42px;
+        text-align: center;
+    }
+    .footer-inner-section {
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+    .footer-box ul {
+        display: inline-block;
+        text-align: center;
+    }    
+    .address-box ul{
+        text-align: left;
+    }
+    .plans-section .generic-title {
+        margin-bottom: 35px;
+    }
+   
+    .box-video .bg-video, .video-container iframe, .bg-video::after {
+        height: 250px;
+    }
+    .box-video .bt-play {
+        width: 70px;
+        height: 70px;
+    }
+    .sponsers-sec ul li img {
+        width: 100%;
+    }
+    .sponsers-sec {
+        padding: 40px 15px;
+    }
+    .padding-bottom {
+        padding-bottom: 30px;
+    }
+    .padding-top {
+        padding-top: 30px;
+    }
+    h2 {
+        font-size: 18px;
+        line-height: 36px;
+    }
+    .about-main-sec img {
+        width: 250px;
+    }
+    .banner-sec {
+        padding: 136px 0 50px 0;
+        text-align: center;
+    }
+    .social-box{
+        display: none;
+    }
+    .banner-left-sec {
+        width: 100%;
+        margin-right: 5px;
+       
+    }
+    .banner-sec::after {
+        width: 350px;
+    }
+    .banner-sec h1 span{
+        color: #fff;
+    }
+    .service-slider-sec .generic-title {
+        width: 100%;
+        margin-bottom: 26px;
+        padding: 0 15px;
+    }
+    .generic-btn a {
+        font-size: 16px;
+        padding: 8px 24px 9px;
+        /*
+        margin-right: 105px;
+        */
+    }
+    .plans-section .row{
+        gap: 30px;
+    }
+}

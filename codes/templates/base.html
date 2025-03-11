@@ -1,14 +1,228 @@
-{% load 'static' %}
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="{% static 'css/output.css' %}" rel="stylesheet">
+    <title>{% block title %}weblog page{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'media/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'media/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'media/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'media/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'media/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'media/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'media/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'media/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'media/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'media/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'media/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'media/favicon-16x16.png' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/superclasses.css' %}">
+    <link href="{% static 'css/special-classes.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/custom-style.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/mobile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+    <div class="loader-mask d-none">
+        <div class="loader">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- navbar section -->
+    <div class="navbar-main-sec w-100 float-left index-page-navbar" dir="rtl">
+        <div class="wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <a class="navbar-brand" href="index-2.html">
+                    <img src="{% static 'media/AiMentor-logo.png' %}" alt="AiMentor-logo">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <ul class="navbar-nav mr-auto my-2 my-lg-0">
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                خانه
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                                <a class="dropdown-item" href="index-2.html"><i class="fas fa-angle-left"></i> خانه یک</a>
+                                <a class="dropdown-item" href="index01.html"><i class="fas fa-angle-left"></i> خانه دو</a>
+                                <a class="dropdown-item" href="index02.html"><i class="fas fa-angle-left"></i> خانه سه</a>
+                            </div>
+                          </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              صفحات
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="faq.html"><i class="fas fa-angle-left"></i> سوالات متداول</a>
+                              <a class="dropdown-item" href="about.html"><i class="fas fa-angle-left"></i> درباره ما</a>
+                              <a class="dropdown-item" href="pricing.html"><i class="fas fa-angle-left"></i> قیمت ها</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             وبلاگ
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                              <a class="dropdown-item" href="single-blog.html"><i class="fas fa-angle-left"></i> تک-وبلاگ</a>
+                              <a class="dropdown-item" href="four-column.html"><i class="fas fa-angle-left"></i> چهار-ستون</a>
+                              <a class="dropdown-item" href="one-column.html"><i class="fas fa-angle-left"></i> یک-ستون</a>
+                              <a class="dropdown-item" href="load-more.html"><i class="fas fa-angle-left"></i> بارگزاری-بیشتر</a>
+                              <a class="dropdown-item" href="six-colum-full-wide.html"><i class="fas fa-angle-left"></i> شش-ستون-کامل</a>
+                              <a class="dropdown-item" href="three-column.html"><i class="fas fa-angle-left"></i> سه-ستون</a>
+                              <a class="dropdown-item" href="three-colum-sidbar.html"><i class="fas fa-angle-left"></i> سه-ستون-سایدبار</a>
+                              <a class="dropdown-item" href="two-column.html"><i class="fas fa-angle-left"></i> دو-ستون</a>
+                            </div>
+                          </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="service.html">خدمات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">تماس</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <ul class="mb-0 list-unstyled d-flex align-items-center navbar-right-box">
+                            <li><a href="#"><i class="fas fa-search"></i></a></li>
+                            <li>
+                                <button class="login-btn" type="submit">
+                                    <img src="{% static 'media/lock-icon.png' %}" alt="lock-icon"> ورود</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- navbar section -->
+    <!-- banner section -->
+    <section class="banner-sec about-banner pricing-banner w-100 float-left bg-light-black pb-0">
+        <div class="wrapper2"> 
+        <!-- plans -->
+        <div class="generic-title text-center">
+            <h2 class="mb-0" style="  font-family: 'estedad-verybold';            "> سه ستونی</h2>
+        </div>
+        </div>
+        <div class="social-box">
+            <ul class="mb-0 list-unstyled">
+                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                <li><a href="#"><i class="fas fa-image"></i></a></li>
+                <li><a href="#"><i class="fas fa-comment-alt"></i></a></li>
+            </ul>
+        </div>
+    </section>
+    <!-- banner section -->
+    <!-- MAIN SECTION -->
+    <!--End Slider Section-->
+    <section class="blog-posts blogpage-section w-100 float-left">
+        <div class="container">
+            <div class="row wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                <div id="blog" class="col-xl-12">
+                    <!-- threecolumn-blog  -->
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="600">
+                            <div class="blog-box blog-box1 mb-4">
+                                <figure class="blog-image">
+                                    <img src="images/blog-image1.jpg" alt="" class="img-fluid">
+                                </figure>
+                                <div class="blog-text-con">
+                                    <ul class="list-unstyled">
+                                        <li class="d-inline-block">
+                                            <figure class="mb-0">
+                                                <img src="{% static 'media/blog-profile-img.png' %}" alt="blog-profile-img">
+                                            </figure>
+                                        </li>
+                                        <li class="d-inline-block"><span>محسن دادار</span></li>
+                                    </ul>
+                                    <a href="#">
+                                        <h4>مزایای برتر هوش مصنوعی برای بازاریابان، وضعیت داده های هوش مصنوعی</h4>
+                                    </a>
+                                    <div class="posted-details">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="d-inline-block" dir="rtl"><i class="fas fa-calendar-alt"></i>  ۲۱ خرداد, ۱۴۰۲</li>
+                                            <li class="d-inline-block mr-0" dir="rtl"><i class="fas fa-comments"></i>  ۰ دیدگاه</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- footer section-->
+    {% include 'include/footer.html' %}
+    
+    <a id="button" class="show"></a>
+    <!-- footer section-->
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.js' %}"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script>
+         $(window).on('load', function(){ 
+        // Preloader
+        $('.loader').fadeOut();
+        $('.loader-mask').delay(350).fadeOut('slow');
+        });
+        var btn = $('#button');
+         
+         $(window).scroll(function() {
+           if ($(window).scrollTop() > 300) {
+           btn.addClass('show');
+         }
+          else {
+           btn.removeClass('show');
+         }
+         });
+         btn.on('click', function(e) {
+         e.preventDefault();
+         $('html, body').animate({scrollTop:0}, '300');
+       });
+       window.addEventListener('load',function(){
+         document.querySelector('body').classList.add("loaded")  
+       });
+        AOS.init();
+
+        const $dropdown = $(".dropdown");
+    const $dropdownToggle = $(".dropdown-toggle");
+    const $dropdownMenu = $(".dropdown-menu");
+    const showClass = "show";
+
+    $(window).on("load resize", function() {
+    if (this.matchMedia("(min-width: 768px)").matches) {
+        $dropdown.hover(
+        function() {
+            const $this = $(this);
+            $this.addClass(showClass);
+            $this.find($dropdownToggle).attr("aria-expanded", "true");
+            $this.find($dropdownMenu).addClass(showClass);
+        },
+        function() {
+            const $this = $(this);
+            $this.removeClass(showClass);
+            $this.find($dropdownToggle).attr("aria-expanded", "false");
+            $this.find($dropdownMenu).removeClass(showClass);
+        }
+        );
+    } else {
+        $dropdown.off("mouseenter mouseleave");
+    }
+    });
+    </script>
 </body>
 </html>
