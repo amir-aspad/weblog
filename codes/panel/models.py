@@ -21,6 +21,9 @@ class User(PermissionsMixin, AbstractBaseUser):
 
     created = models.DateTimeField(auto_now_add=True)
 
+    profile = models.ImageField(_("پروفایل"), upload_to='user', blank=True, null=True)
+    bio = models.TextField(_('توضیحات'), max_length=120, blank=True, null=True)
+
     USERNAME_FIELD = 'phone'
     REQUIRED_FIELDS = ['username', 'email']
 
