@@ -1,14 +1,15 @@
+from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from django.db import models
 
-from .managers import BlogManager
+from .managers import ActiveManager
 
 class BaseModle(models.Model):
-    title = models.CharField(max_length=120, unique=True)
+    title = models.CharField(_("عنوان"), max_length=120, unique=True)
     slug = models.SlugField(max_length=120, unique=True, allow_unicode=True)
 
     def __str__(self):
-        return self.title
+        return self.title[:30]
 
 
     class Meta:
@@ -16,10 +17,11 @@ class BaseModle(models.Model):
 
 
 class Category(BaseModle):
-    sub = models.ForeignKey('self', on_delete=models.CASCADE, related_name='sub_category',
-        blank=True, null=True
+    sub = models.ForeignKey(
+        'self', verbose_name=_('زیر مجموعه دسته بندی'),  on_delete=models.CASCADE,
+        related_name='sub_category', blank=True, null=True
     )
-    is_sub = models.BooleanField(default=False)
+    is_sub = models.BooleanField(_('وضعیت زیر مجموعه بودن'), default=False)
 
     class Meta:
         verbose_name = 'دسته بندی'
@@ -27,24 +29,19 @@ class Category(BaseModle):
 
 
 class Blog(BaseModle):
-    baner = models.ImageField(upload_to='blog')
-    text = models.TextField()
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blogs')
-    cates = models.ManyToManyField(Category, related_name='blogs')
-    is_active = models.BooleanField(default=True)
+    baner = models.ImageField(_('بنر'), upload_to='blog')
+    text = models.TextField(_('متن'))
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, verbose_name=_('نویسنده'),  on_delete=models.CASCADE, related_name='blogs'
+    )
+    cates = models.ManyToManyField(Category, verbose_name=_("دسته بندی"), related_name='blogs')
+    is_active = models.BooleanField(_('وضعیت انتشار'), default=True)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
     objects = models.Manager()
-    config = BlogManager()
-    
-
-    class Meta:
-        ordering = ('-updated', '-created',)
-        verbose_name = 'بلاگ'
-        verbose_name_plural = 'بلاگ ها'
-
+    config = ActiveManager()
 
     def can_like(self, request):
         '''can user like blog or no'''
@@ -55,9 +52,14 @@ class Blog(BaseModle):
         return self.blog_like.all().count()
 
 
+    class Meta:
+        ordering = ('-updated', '-created',)
+        verbose_name = 'بلاگ'
+        verbose_name_plural = 'بلاگ ها'
+
 class Like(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='blog_like')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('کاربر'),  on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, verbose_name=_('بلاگ'), related_name='blog_like')
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -70,9 +72,43 @@ class Like(models.Model):
 
 
 class Follow(models.Model):
-    follower = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='followers')
-    following = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='followings')
+    follower = models.ForeignKey(
+        settings.AUTH_USER_MODEL, verbose_name=_('دنبال کننده'),
+        on_delete=models.CASCADE, related_name='followers'
+    )
+    following = models.ForeignKey(
+        settings.AUTH_USER_MODEL, verbose_name=_('دنبال شونده'),
+        on_delete=models.CASCADE, related_name='followings'
+    )
     created = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return f'user {self.follower.phone} follow {self.following.phone}'
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, verbose_name=_('کاربر'), on_delete=models.CASCADE, related_name='comments'
+    )
+    blog = models.ForeignKey(
+        Blog, on_delete=models.CASCADE, verbose_name=_('بلاگ'), related_name='comments'
+    )
+    sub = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name=_('در پاسخ به'),
+        related_name='sub_comments',  blank=True, null=True
+    )
+    is_sub = models.BooleanField(_('وضعیت پاسخ'), default=False)
+    text = models.TextField(_('متن کامنت'), max_length=150)
+    is_active = models.BooleanField(_('وضعیت انتشار'), default=False)
+    created = models.DateTimeField(auto_now_add=True)
+
+    objects = models.Manager()
+    config = ActiveManager()
+
+    def __str__(self):
+        return self.text[:30]
+    
+
+    class Meta:
+        ordering = ('-created',)
+        verbose_name = 'کامنت'
+        verbose_name_plural = 'کامنت ها'
