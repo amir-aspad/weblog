@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}show all blog{% endblock %}
+
+{% block content %}
+<div class="loader-mask d-none">
+    <div class="loader">
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- banner section -->
+<section class="banner-sec about-banner pricing-banner w-100 float-left bg-light-black pb-0">
+    <div class="wrapper2"> 
+    <!-- plans -->
+    <div class="generic-title text-center">
+        <h2 class="mb-0" style="font-family: 'estedad-verybold';">بالاگ ها</h2>
+    </div>
+    </div>
+    <div class="social-box">
+        <ul class="mb-0 list-unstyled">
+            <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+            <li><a href="#"><i class="fas fa-image"></i></a></li>
+            <li><a href="#"><i class="fas fa-comment-alt"></i></a></li>
+        </ul>
+    </div>
+</section>
+<!-- banner section -->
+<!-- MAIN SECTION -->
+<!--End Slider Section-->
+<section class="blog-posts blogpage-section w-100 float-left">
+    <div class="container">
+        <div class="row wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+            <div id="blog" class="col-xl-12">
+                <div class="row">
+                    {% for blog in blogs %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="600">
+                        <div class="blog-box blog-box1 mb-4">
+                            <figure class="blog-image">
+                                <img src="{{blog.baner.url}}" alt="" class="img-fluid">
+                            </figure>
+                            <div class="blog-text-con">
+                                <ul class="list-unstyled">
+                                    <li class="d-inline-block">
+                                        <figure class="mb-0">
+                                            <img src="{{blog.author.profile.url}}" alt="blog-profile-img">
+                                        </figure>
+                                    </li>
+                                    <li class="d-inline-block"><span>{{ blog.author.email|default:blog.author.phone }}</span></li>
+                                </ul>
+                                <a href="#">
+                                    <h4>{{blog.title}}</h4>
+                                </a>
+                                <div class="posted-details">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="d-inline-block" dir="rtl"><i class="fas fa-calendar-alt"></i>{{blog.created|date:'H:i:s - Y/m/d'}}</li>
+                                        <li class="d-inline-block mr-0" dir="rtl"><i class="fas fa-comments"></i>  ۰ دیدگاه</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>there is no publish blog yet!</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
