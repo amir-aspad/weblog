@@ -38,3 +38,8 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         models = User
         fields = '__all__'
+
+
+class LoginUserForm(forms.Form):
+    info = forms.CharField(label=_('شماره همراه، یوزر نیم یا ایمیل'))
+    password = forms.CharField(label=_('پسورد'), widget=forms.PasswordInput())

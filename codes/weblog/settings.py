@@ -128,3 +128,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # auth user model
 AUTH_USER_MODEL = 'panel.User'
+
+# logint url for my panel
+LOGIN_URL = '/panel/login/'
