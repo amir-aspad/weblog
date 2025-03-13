@@ -21,3 +21,6 @@ def phone_validataion(phone):
     else: raise ValidationError('شماره همراه درست نمی‌باشد')
 
 
+def send_verify_phone(phone, code):
+    #TODO: send verify code to user phone number
+    pass

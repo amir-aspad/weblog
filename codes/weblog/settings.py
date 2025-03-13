@@ -131,3 +131,7 @@ AUTH_USER_MODEL = 'panel.User'
 
 # logint url for my panel
 LOGIN_URL = '/panel/login/'
+
+# security config
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True

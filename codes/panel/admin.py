@@ -2,7 +2,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib import admin
 
 from .forms import UserChangeForm, UserCreateForm
-from .models import User, Profile
+from .models import User, Profile, OTP
 
 
 class ProfileInline(admin.StackedInline):
@@ -39,4 +39,9 @@ class UserAdmin(BaseUserAdmin):
         if not request.user.is_superuser:
             form.base_fields['is_superuser'].disabled = True
         return form
+
+
+@admin.register(OTP)
+class OTPAdmin(admin.ModelAdmin):
+    list_display = ('phone', 'code', 'created')
     

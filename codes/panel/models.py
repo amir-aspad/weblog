@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 from django.db import models
 
 # import from panel app
@@ -8,6 +9,8 @@ from .managers import UserManagerConfig
 # import from extra modules
 from extra_module.utils import username_validation, phone_validataion
 
+# third party library
+from datetime import timedelta
 
 class User(PermissionsMixin, AbstractBaseUser):
     username = models.CharField(_('نام کاربری'), max_length=60, validators=[username_validation],
@@ -51,3 +54,19 @@ class Profile(models.Model):
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
 
+
+class OTP(models.Model):
+    phone = models.CharField(_("شماره همراه"), max_length=11, unique=True)
+    code = models.CharField(_("کد تایید"), max_length=6)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.phone
+    
+    def is_alive(self):
+        '''check expiration date'''
+        return self.created+timedelta(minutes=3) > timezone.now()
+
+    class Meta:
+        verbose_name = 'رمز یک بار مصرف'
+        verbose_name_plural = 'رمزهای یک بار مصرف'
