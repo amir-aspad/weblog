@@ -1,5 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
+from django.urls import reverse
 from django.db import models
 
 from .managers import ActiveManager
@@ -50,6 +51,9 @@ class Blog(BaseModle):
     def like_count(self):
         '''count all like for especial blog'''
         return self.blog_like.all().count()
+    
+    def get_absolute_url(self):
+        return reverse('blog:detail', kwargs={'slug':self.slug})
 
 
     class Meta:

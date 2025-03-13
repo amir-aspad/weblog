@@ -48,7 +48,7 @@
                                     </li>
                                     <li class="d-inline-block"><span>{{ blog.author.email|default:blog.author.phone }}</span></li>
                                 </ul>
-                                <a href="#">
+                                <a href="{{blog.get_absolute_url}}">
                                     <h4>{{blog.title}}</h4>
                                 </a>
                                 <div class="posted-details">

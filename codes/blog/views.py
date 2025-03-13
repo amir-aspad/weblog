@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 
 # import from blog app
@@ -14,3 +14,9 @@ class AllPostView(View):
             'blogs':blogs
         }
         return render(request, self.template_name, data)
+    
+
+class DetailBlogView(View):
+    def get(self, request, slug):
+        blog = get_object_or_404(Blog, slug=slug, is_active=True)
+        return render(request, 'blog/detail.html', {'blog':blog})
