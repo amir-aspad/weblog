@@ -79,7 +79,7 @@ class LoginUserView(View):
         if form.is_valid():
             cd = form.cleaned_data
 
-            user = authenticate(request, username=cd['info'], password=cd['password'])
+            user = authenticate(request, phone=cd['info'], password=cd['password'])
             if user is not None:
                 login(request, user)
                 messages.success(request, 'با موفقیت وارد شدید')
