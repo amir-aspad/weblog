@@ -38,3 +38,35 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         models = User
         fields = '__all__'
+
+
+class LoginUserForm(forms.Form):
+    info = forms.CharField(label=_('شماره همراه، یوزر نیم یا ایمیل'))
+    password = forms.CharField(label=_('پسورد'), widget=forms.PasswordInput())
+
+
+class RegisterUserForm(forms.Form):
+    phone = forms.CharField(label=_("شماره همراه"), max_length=11)
+    password1 = forms.CharField(label=_("پسورد"), widget=forms.PasswordInput())
+    password2 = forms.CharField(label=_("تکرار پسورد"), widget=forms.PasswordInput())
+
+    def clean_password2(self):
+        p1 = self.cleaned_data['password1']
+        p2 = self.cleaned_data['password2']
+
+        if p1 and p2 and p1 != p2:
+            raise ValidationError('پسورد ها باید یکسان باشد')
+        
+        return p2
+    
+    def clean_phone(self):
+        phone = self.cleaned_data['phone']
+
+        if User.objects.filter(phone=phone).exists():
+            raise ValidationError('این شماره همراه از قبل وجود دارد')
+        
+        return phone
+    
+
+class VerifyPhoneForm(forms.Form):
+    code = forms.CharField(label=_('کد تایید'))

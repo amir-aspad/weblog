@@ -137,3 +137,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # auth user model
 AUTH_USER_MODEL = 'panel.User'
+
+# logint url for my panel
+LOGIN_URL = '/panel/login/'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'panel.authentication.UsernameAuthenticate',
+    'panel.authentication.EmailAuthenticate',
+]
+
+# security config
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
