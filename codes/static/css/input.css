@@ -1,9 +1,0 @@
-@import "tailwindcss";
-
-
-.user-profile{
-    @apply size-5;
-}
-.profile-container{
-    @apply flex justify-start items-center;
-}
