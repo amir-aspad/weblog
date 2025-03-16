@@ -52,6 +52,9 @@ class Blog(BaseModle):
         '''count all like for especial blog'''
         return self.blog_like.all().count()
     
+    def comments_count(self):
+        return self.comments.filter(is_active=True).count()
+    
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'slug':self.slug})
 

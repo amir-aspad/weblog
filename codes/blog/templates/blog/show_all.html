@@ -2,71 +2,71 @@
 {% load static %}
 {% block title %}show all blog{% endblock %}
 
-{% block content %}
-<div class="loader-mask d-none">
-    <div class="loader">
-        <div></div>
-        <div></div>
-    </div>
-</div>
-<!-- banner section -->
-<section class="banner-sec about-banner pricing-banner w-100 float-left bg-light-black pb-0">
-    <div class="wrapper2"> 
-    <!-- plans -->
-    <div class="generic-title text-center">
-        <h2 class="mb-0" style="font-family: 'estedad-verybold';">بالاگ ها</h2>
-    </div>
-    </div>
-    <div class="social-box">
-        <ul class="mb-0 list-unstyled">
-            <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-            <li><a href="#"><i class="fas fa-image"></i></a></li>
-            <li><a href="#"><i class="fas fa-comment-alt"></i></a></li>
-        </ul>
-    </div>
-</section>
-<!-- banner section -->
-<!-- MAIN SECTION -->
-<!--End Slider Section-->
-<section class="blog-posts blogpage-section w-100 float-left">
-    <div class="container">
-        <div class="row wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-            <div id="blog" class="col-xl-12">
-                <div class="row">
-                    {% for blog in blogs %}
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="600">
-                        <div class="blog-box blog-box1 mb-4">
-                            <figure class="blog-image">
-                                <img src="{{blog.baner.url}}" alt="" class="img-fluid">
-                            </figure>
-                            <div class="blog-text-con">
-                                <ul class="list-unstyled">
-                                    <li class="d-inline-block">
-                                        <figure class="mb-0">
-                                            <img src="{{blog.author.profile.url}}" alt="blog-profile-img">
-                                        </figure>
-                                    </li>
-                                    <li class="d-inline-block"><span>{{ blog.author.email|default:blog.author.phone }}</span></li>
-                                </ul>
-                                <a href="{{blog.get_absolute_url}}">
-                                    <h4>{{blog.title}}</h4>
-                                </a>
-                                <div class="posted-details">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="d-inline-block" dir="rtl"><i class="fas fa-calendar-alt"></i>{{blog.created|date:'H:i:s - Y/m/d'}}</li>
-                                        <li class="d-inline-block mr-0" dir="rtl"><i class="fas fa-comments"></i>  ۰ دیدگاه</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% empty %}
-                    <p>there is no publish blog yet!</p>
-                    {% endfor %}
-                </div>
+{% block body %}
+<div class="row tm-row">
+    <div class="col-12">
+        <form method="GET" class="form-inline tm-mb-80 tm-search-form">                
+            <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
+            <button class="tm-search-button" type="submit">
+                <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+            </button>                                
+        </form>
+    </div>                
+</div>            
+<div class="row tm-row">
+    {% for blog in blogs %}
+    <article class="col-12 col-md-6 tm-post">
+        <hr class="tm-hr-primary">
+        <a href="{{blog.get_absolute_url}}" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+                <img src="{{blog.baner.url}}" alt="Image" class="img-fluid">                            
             </div>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{blog.title}}</h2>
+        </a>                    
+        <p class="tm-pt-30">{{blog.text|truncatewords:20}}</p>
+        <div class="d-flex justify-content-between align-items-center tm-pt-45">
+            <div class="category-container">
+                {% for cat in blog.cates.all %}
+                <span class="tm-color-primary category">{{cat.title}}</span>
+                {% endfor %}
+            </div>
+            <span class="tm-color-primary">{{blog.updated|date:'Y/m/d'}}</span>
         </div>
-    </div>
-
-</section>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <span>{{blog.comments_count}} comments</span>
+            <span>by {{blog.fullname}}</span>
+        </div>
+    </article>
+    {% empty %}
+    <p>there is no result found for your info</p>
+    {% endfor %}
+</div>
+<div class="tm-mt-100 tm-mb-75">
+    <div class="new_paginator">
+        <a href="{% if blogs.has_previous %}?page={{ blogs.previous_page_number }}{% endif %}" 
+            class="mb-2 tm-btn tm-btn-primary tm-prev-next {% if not blogs.has_previous %}disabled{% endif %}">
+                Prev
+        </a>
+        <nav class="tm-paging-nav d-inline-block">
+            <ul>
+                {% for num in blogs.paginator.page_range %}
+                {% if blogs.number == num %}
+                <li class="tm-paging-item active">
+                    <span class="mb-2 tm-btn tm-paging-link">{{ num }}</span>
+                </li>
+                {% else %}
+                <li class="tm-paging-item">
+                    <a href="?page={{ num }}" class="mb-2 tm-btn tm-paging-link">{{ num }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </nav>
+        <a href="{% if blogs.has_next %}?page={{ blogs.next_page_number }}{% endif %}" 
+        class="mb-2 tm-btn tm-btn-primary tm-prev-next {% if not blogs.has_next %}disabled{% endif %}">
+                Next
+        </a>
+    </div>                
+</div>
 {% endblock %}
