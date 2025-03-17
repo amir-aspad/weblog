@@ -33,7 +33,7 @@ class FollowAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('user', 'blog')
-    raw_id_fields = ('sub', 'user', 'blog')
+    list_display = ('user', 'blog', 'is_reply', 'is_active', 'text')
+    raw_id_fields = ('reply', 'user', 'blog')
     search_fields = ('text',)
-    list_filter = ('created', 'is_active')
+    list_filter = ('created', 'is_active', 'is_reply')

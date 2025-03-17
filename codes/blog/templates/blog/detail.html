@@ -1,7 +1,121 @@
 {% extends 'base.html' %}
 
-{% block title %} detail {{blog.title}} page {% endblock %}
+{% block title %} detail page| {{blog.title}}{% endblock %}
 
-{% block content %}
-{{blog.title}}
+{% block body %}
+<h1>Detail blog post page</h1>
+<div class="row tm-row">
+    <div class="col-12">
+        <hr class="tm-hr-primary tm-mb-55">
+        <!-- Video player 1422x800 -->
+        <img width="954" height="535" src="{{blog.baner.url}}" controls class="tm-mb-40">
+    </div>
+</div>
+<div class="row tm-row">
+    <div class="col-lg-8 tm-post-col">
+        <div class="tm-post-full">                    
+            <div class="mb-4">
+                <h2 class="pt-2 tm-color-primary tm-post-title">{{blog.title}}</h2>
+                <p class="tm-mb-40">creaed at: {{blog.created|date:'Y/m/d'}}<br>
+                last time updated: {{blog.updated|date:'Y/m/d'}}<br>
+                posted by {{blog.author.profile.full_name}}
+                </p>
+                <p>{{blog.text}}</p>
+                <span>Category: </span>
+                <span class="tm-color-primary">
+                {% for cat in blog.cates.all %}
+                    <span class="category category-detail tm-color-primary">{{cat.title}}</span>
+                {% endfor %}
+                </span>
+            </div>
+            
+            <!-- Comments -->
+            <div>
+                <h2 class="tm-color-primary tm-post-title">Comments</h2>
+                <hr class="tm-hr-primary tm-mb-45">
+                {% for comment in comments %}
+                    <div class="tm-comment tm-mb-45">
+                        <figure class="tm-comment-figure">
+                            <img src="{{comment.user.profile.profile.url}}" alt="Image" class="mb-2 rounded-circle img-thumbnail">
+                            <figcaption class="tm-color-primary text-center">{{comment.user.profile.full_name}}</figcaption>
+                        </figure>
+                        <div>
+                            <p>{{comment.text}}</p>
+                            <div class="d-flex justify-content-between">
+                                <!-- <a href="#" class="tm-color-primary">REPLY</a> -->
+                                <span class="tm-color-primary">{{blog.created|date:'Y/m/d'}}</span>
+                            </div>                                                 
+                        </div>                                
+                    </div>
+                    {% for reply in comment.reply_comments %}
+                    <div class="tm-comment-reply tm-mb-45">
+                        <div class="tm-comment">
+                            <figure class="tm-comment-figure">
+                                <img src="{{reply.user.profile.profile.url}}" alt="Image" class="mb-2 rounded-circle img-thumbnail">
+                                <figcaption class="tm-color-primary text-center">{{reply.user.profile.full_name}}</figcaption>    
+                            </figure>
+                            <p>{{reply.text}}</p>
+                        </div>                                
+                        <span class="d-block text-right tm-color-primary">{{reply.created|date:'Y/m/d'}}</span>
+                    </div>
+                    {% endfor %}
+                    <hr>
+                {% empty %}
+                <p class="alert alert-danger">no comment found</p>
+                {% endfor %}
+                {% if request.user.is_authenticated %}
+                <form action="" class="mb-5 tm-comment-form">
+                    <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
+                    <div class="mb-4">
+                        <input class="form-control" name="name" type="text">
+                    </div>
+                    <div class="mb-4">
+                        <input class="form-control" name="email" type="text">
+                    </div>
+                    <div class="mb-4">
+                        <textarea class="form-control" name="message" rows="6"></textarea>
+                    </div>
+                    <div class="text-right">
+                        <button class="tm-btn tm-btn-primary tm-btn-small">Submit</button>                        
+                    </div>                                
+                </form>
+                {% else %}
+                <div class="alert alert-danger">for send comment. you should login first</div>
+                {% endif %}                  
+            </div>
+        </div>
+    </div>
+    <aside class="col-lg-4 tm-aside-col">
+        <div class="tm-post-sidebar">
+            <hr class="mb-3 tm-hr-primary">
+            <h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
+            <ul class="tm-mb-75 pl-5 tm-category-list">
+                {% for cat in categories %}
+                <li><a href="#" class="tm-color-primary">{{cat.title}}</a></li>
+                {% endfor %}
+            </ul>
+            <hr class="mb-3 tm-hr-primary">
+            <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
+            <a href="#" class="d-block tm-mb-40">
+                <figure>
+                    <img src="img/img-02.jpg" alt="Image" class="mb-3 img-fluid">
+                    <figcaption class="tm-color-primary">Duis mollis diam nec ex viverra scelerisque a sit</figcaption>
+                </figure>
+            </a>
+            <a href="#" class="d-block tm-mb-40">
+                <figure>
+                    <img src="img/img-05.jpg" alt="Image" class="mb-3 img-fluid">
+                    <figcaption class="tm-color-primary">Integer quis lectus eget justo ullamcorper ullamcorper</figcaption>
+                </figure>
+            </a>
+            <a href="#" class="d-block tm-mb-40">
+                <figure>
+                    <img src="img/img-06.jpg" alt="Image" class="mb-3 img-fluid">
+                    <figcaption class="tm-color-primary">Nam lobortis nunc sed faucibus commodo</figcaption>
+                </figure>
+            </a>
+        </div>                    
+    </aside>
+</div>
+    
 {% endblock %}

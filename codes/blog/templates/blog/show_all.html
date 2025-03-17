@@ -35,11 +35,11 @@
         <hr>
         <div class="d-flex justify-content-between">
             <span>{{blog.comments_count}} comments</span>
-            <span>by {{blog.fullname}}</span>
+            <span>author: {{blog.author.profile.full_name}}</span>
         </div>
     </article>
     {% empty %}
-    <p>there is no result found for your info</p>
+    <p class="alert alert-danger">there is no result found for your info</p>
     {% endfor %}
 </div>
 <div class="tm-mt-100 tm-mb-75">

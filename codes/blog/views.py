@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.views import View
 
 # import from blog app
-from .models import Blog
+from .models import Blog, Category, Comment
 
 
 class AllPostView(View):
@@ -25,4 +25,12 @@ class AllPostView(View):
 class DetailBlogView(View):
     def get(self, request, slug):
         blog = get_object_or_404(Blog, slug=slug, is_active=True)
-        return render(request, 'blog/detail.html', {'blog':blog})
+        categories = Category.objects.all()
+        comments = Comment.config.filter(blog=blog, is_reply=False)
+
+        context = {
+            'blog':blog,
+            'categories':categories,
+            'comments':comments
+        }
+        return render(request, 'blog/detail.html', context=context)

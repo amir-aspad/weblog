@@ -3,7 +3,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.db import models
 
-from .managers import ActiveManager
+from .managers import ActiveManager, FristCommentManager
 
 class BaseModle(models.Model):
     title = models.CharField(_("عنوان"), max_length=120, unique=True)
@@ -100,20 +100,24 @@ class Comment(models.Model):
     blog = models.ForeignKey(
         Blog, on_delete=models.CASCADE, verbose_name=_('بلاگ'), related_name='comments'
     )
-    sub = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name=_('در پاسخ به'),
-        related_name='sub_comments',  blank=True, null=True
+    reply = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name=_('در پاسخ به'),
+        related_name='rcomments',  blank=True, null=True
     )
-    is_sub = models.BooleanField(_('وضعیت پاسخ'), default=False)
+    is_reply = models.BooleanField(_('وضعیت پاسخ'), default=False)
     text = models.TextField(_('متن کامنت'), max_length=150)
     is_active = models.BooleanField(_('وضعیت انتشار'), default=False)
     created = models.DateTimeField(auto_now_add=True)
 
     objects = models.Manager()
-    config = ActiveManager()
+    config = FristCommentManager()
 
     def __str__(self):
         return self.text[:30]
     
+
+    def reply_comments(self):
+        return self.rcomments.filter(is_active=True)
+
 
     class Meta:
         ordering = ('-created',)
