@@ -26,7 +26,7 @@ class DetailBlogView(View):
     def get(self, request, slug):
         blog = get_object_or_404(Blog, slug=slug, is_active=True)
         categories = Category.objects.all()
-        comments = Comment.config.filter(blog=blog, is_reply=False)
+        comments = Comment.config.filter(blog=blog)
 
         context = {
             'blog':blog,

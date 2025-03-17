@@ -54,6 +54,10 @@ class Blog(BaseModle):
     
     def comments_count(self):
         return self.comments.filter(is_active=True).count()
+
+    def related_blog(self):
+        '''find related blog. just look at categories'''
+        return Blog.config.filter(cates__in=self.cates.all()).exclude(id=self.id).distinct()[:5]
     
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'slug':self.slug})

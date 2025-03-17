@@ -8,7 +8,7 @@
     <div class="col-12">
         <hr class="tm-hr-primary tm-mb-55">
         <!-- Video player 1422x800 -->
-        <img width="954" height="535" src="{{blog.baner.url}}" controls class="tm-mb-40">
+        <img width="954" src="{{blog.baner.url}}" controls class="tm-mb-40">
     </div>
 </div>
 <div class="row tm-row">
@@ -96,24 +96,16 @@
             </ul>
             <hr class="mb-3 tm-hr-primary">
             <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
-            <a href="#" class="d-block tm-mb-40">
+            {% for related in blog.related_blog %}
+            <a href="{{related.get_absolute_url}}" class="d-block tm-mb-40">
                 <figure>
-                    <img src="img/img-02.jpg" alt="Image" class="mb-3 img-fluid">
-                    <figcaption class="tm-color-primary">Duis mollis diam nec ex viverra scelerisque a sit</figcaption>
+                    <img src="{{related.baner.url}}" alt="Image" class="mb-3 img-fluid">
+                    <figcaption class="tm-color-primary">{{related.title}}</figcaption>
                 </figure>
             </a>
-            <a href="#" class="d-block tm-mb-40">
-                <figure>
-                    <img src="img/img-05.jpg" alt="Image" class="mb-3 img-fluid">
-                    <figcaption class="tm-color-primary">Integer quis lectus eget justo ullamcorper ullamcorper</figcaption>
-                </figure>
-            </a>
-            <a href="#" class="d-block tm-mb-40">
-                <figure>
-                    <img src="img/img-06.jpg" alt="Image" class="mb-3 img-fluid">
-                    <figcaption class="tm-color-primary">Nam lobortis nunc sed faucibus commodo</figcaption>
-                </figure>
-            </a>
+            {% empty %}
+            <p class="alert alert-danger">can not find related blog</p>
+            {% endfor %}
         </div>                    
     </aside>
 </div>
