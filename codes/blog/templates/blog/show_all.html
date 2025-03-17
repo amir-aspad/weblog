@@ -4,14 +4,20 @@
 
 {% block body %}
 <div class="row tm-row">
-    <div class="col-12">
+    <div class="col-4">
+        {% if search %}<p>search text: {{search}}</p>{% endif %}
+        {% if category %}<p>your category: {{category}}</p>{% endif %}
+        <p>result found: {{result_count}}</p>
+    </div>            
+    <div class="col-8">
         <form method="GET" action="" class="form-inline tm-mb-80 tm-search-form">                
-            <input class="form-control tm-search-input" name="q" type="text" placeholder="Search..." aria-label="Search">
+            <input class="form-control tm-search-input" name="q" type="text" {% if search %}value="{{search}}" {% endif %} placeholder="Search..." aria-label="Search">
             <button class="tm-search-button" type="submit">
                 <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
-            </button>                                
+            </button>
+            <a href="{% url 'blog:blog_all' %}">remove search</a>                         
         </form>
-    </div>                
+    </div>
 </div>            
 <div class="row tm-row">
     {% for blog in blogs %}
