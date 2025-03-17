@@ -9,11 +9,11 @@
         </div>
         <nav class="tm-nav" id="tm-nav">
             <ul>
-                <li class="tm-nav-item active"><a href="{% url 'blog:all' %}" class="tm-nav-link">
+                <li class="tm-nav-item {% if request.resolver_match.url_name == 'blog_all' %}active{% endif %}"><a href="{% url 'blog:blog_all' %}" class="tm-nav-link">
                         <i class="fas fa-home"></i>
                         Blog Home
                     </a></li>
-                <li class="tm-nav-item"><a href="about.html" class="tm-nav-link">
+                <li class="tm-nav-item "><a href="about.html" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         About Xtra
                     </a></li>

@@ -91,7 +91,7 @@
             <h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
             <ul class="tm-mb-75 pl-5 tm-category-list">
                 {% for cat in categories %}
-                <li><a href="#" class="tm-color-primary">{{cat.title}}</a></li>
+                <li><a href="{% url 'blog:blog_all' %}?category={{cat.slug}}" class="tm-color-primary">{{cat.title}}</a></li>
                 {% endfor %}
             </ul>
             <hr class="mb-3 tm-hr-primary">
