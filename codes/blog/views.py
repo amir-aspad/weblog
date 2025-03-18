@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.views import View
 
 # import from blog app
-from .models import Blog, Category, Comment
+from .models import Blog, Category, Comment, Favorite
 from .forms import CreateCommentForm
 
 
@@ -62,17 +62,18 @@ class DetailBlogView(View):
             'categories':categories,
             'comments':comments,
             'form':form,
-            'can_like': blog.can_like(request)
+            'can_like': blog.can_like(request),
+            'can_add_to_favorite': blog.can_add_to_favorite(request)
         }
         return render(request, 'blog/detail.html', context=context)
     
 
 class CreateCommentView(LoginRequiredMixin, View):
-    def post(self, request, blog_slug):
+    def post(self, request, blog_id):
         form = CreateCommentForm(request.POST)
 
         if form.is_valid():
-            blog = get_object_or_404(Blog, slug=blog_slug)
+            blog = get_object_or_404(Blog, pk=blog_id)
             
             Comment.objects.create(
                 user = request.user,
@@ -82,15 +83,15 @@ class CreateCommentView(LoginRequiredMixin, View):
             messages.success(request, 'comment send successfully after check it will be show in the template')
         else:
             messages.error(request, 'something went wrong')
-        return redirect(reverse('blog:detail', kwargs={'slug':blog_slug}))
+        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
     
 
 class CreateCommentReplyView(LoginRequiredMixin, View):
-    def post(self, request, blog_slug, comment_id):
+    def post(self, request, blog_id, comment_id):
         form = CreateCommentForm(request.POST)
 
         if form.is_valid():
-            blog = get_object_or_404(Blog, slug=blog_slug)
+            blog = get_object_or_404(Blog, pk=blog_id)
             comment = get_object_or_404(Comment, pk=comment_id)
 
             Comment.objects.craete(
@@ -103,5 +104,33 @@ class CreateCommentReplyView(LoginRequiredMixin, View):
             messages.success(request, 'your comment create successfully. after admin check it will show')
         else:
             messages.error(request, 'something went happen')
-        return redirect(reverse('blog:detail', kwargs={'slug':blog_slug}))
+        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
 
+
+class AddToFavoriteView(LoginRequiredMixin, View):
+    def get(self, request, blog_id):
+        blog = get_object_or_404(Blog, pk=blog_id)
+
+        if blog.can_add_to_favorite(request):
+            Favorite.objects.create(
+                user=request.user,
+                blog=blog
+            )
+            messages.success(request, 'added blog into your favorite')
+        else:
+            messages.error(request, 'this blog is exists in your favorite')
+
+        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
+
+
+class RemoveToFavoriteView(LoginRequiredMixin, View):
+    def get(self, request, blog_id):
+        blog = get_object_or_404(Blog, pk=blog_id)
+
+        if not blog.can_add_to_favorite(request):
+            get_object_or_404(Favorite, user=request.user, blog=blog).delete()
+            messages.success(request, 'remove successfully from your favorite')
+        else:
+            messages.error(request, 'this blog is not in your favorite')
+
+        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))

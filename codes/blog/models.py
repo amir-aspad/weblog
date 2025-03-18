@@ -44,6 +44,9 @@ class Blog(BaseModle):
     objects = models.Manager()
     config = ActiveManager()
 
+    def can_add_to_favorite(self, request):
+        return not self.bfavorites.filter(blog=self, user=request.user).exists()
+
     def can_like(self, request):
         '''can user like blog or no'''
         return not self.blog_like.filter(user=request.user).exists()
@@ -53,6 +56,7 @@ class Blog(BaseModle):
         return self.blog_like.count()
     
     def comments_count(self):
+        '''count all comments for especial blog'''
         return self.comments.filter(is_active=True).count()
 
     def related_blog(self):
@@ -127,3 +131,16 @@ class Comment(models.Model):
         ordering = ('-created',)
         verbose_name = 'کامنت'
         verbose_name_plural = 'کامنت ها'
+
+    
+class Favorite(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='ufavorites')
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='bfavorites')
+
+    def __str__(self):
+        return f'{self.user} - {self.blog}'
+    
+
+    class Meta:
+        verbose_name = 'علاقه مندی'
+        verbose_name_plural = 'علاقه مندی ها'

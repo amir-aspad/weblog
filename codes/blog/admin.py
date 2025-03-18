@@ -1,7 +1,9 @@
 from django.contrib import admin
 
-from .models import Blog, Category, Like, Follow, Comment
+from .models import Blog, Category, Like, Follow, Comment, Favorite
 
+
+admin.site.register(Favorite)
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
