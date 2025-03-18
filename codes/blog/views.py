@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.views import View
 
 # import from blog app
-from .models import Blog, Category, Comment, Favorite
+from .models import Blog, Category, Comment, Favorite, Like
 from .forms import CreateCommentForm
 
 
@@ -132,5 +132,31 @@ class RemoveToFavoriteView(LoginRequiredMixin, View):
             messages.success(request, 'remove successfully from your favorite')
         else:
             messages.error(request, 'this blog is not in your favorite')
+
+        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
+    
+
+class LikeView(LoginRequiredMixin, View):
+    def get(self, request, blog_id):
+        blog = get_object_or_404(Blog, pk=blog_id)
+
+        if blog.can_like(request):
+            Like.objects.create(user=request.user, blog=blog)
+            messages.success(request, 'you like this blog successfully')
+        else:
+            messages.error(request, 'you like this blog before')
+
+        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
+
+
+class UnLikeView(LoginRequiredMixin, View):
+    def get(self, request, blog_id):
+        blog = get_object_or_404(Blog, pk=blog_id)
+
+        if not blog.can_like(request):
+            get_object_or_404(Like, user=request.user, blog=blog).delete()
+            messages.success(request, 'you unlike this blog successfully')
+        else:
+            messages.error(request, 'you unlike this blog before')
 
         return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))

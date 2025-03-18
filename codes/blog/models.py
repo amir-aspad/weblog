@@ -75,10 +75,9 @@ class Blog(BaseModle):
 class Like(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('کاربر'),  on_delete=models.CASCADE)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, verbose_name=_('بلاگ'), related_name='blog_like')
-    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'user {self.user.id} like blog {self.blog.id}'
+        return f'user {self.user} like blog {self.blog}'
     
 
     class Meta:
