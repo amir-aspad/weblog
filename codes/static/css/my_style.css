@@ -21,3 +21,36 @@
     width: 100%;
     gap: 10px;
 }
+.filter{
+    padding: 10px;
+}
+.filter p{
+    margin-bottom: 0px !important;
+    font-size: 20px;
+    line-height: 23px;
+}
+.parent-info{
+    display: flex;
+    gap: 5px;
+}
+.info{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.info svg{
+    width: 25px;
+    color: #999
+}
+.like, .like span{
+    color: red;
+}
+.like svg, .favorite{
+    width: 60px;
+}
+.like:hover svg, .favorite:hover{
+    cursor: pointer;
+}
+.favorite{
+    color: #099;
+}

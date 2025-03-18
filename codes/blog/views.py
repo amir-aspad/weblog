@@ -43,7 +43,7 @@ class AllPostView(View):
             'blogs': blogs,
             'search': self.search,
             'category': self.category,
-            'result_count': paginate.count
+            'result_count': paginate.count,
         }
         return render(request, self.template_name, data)
     
@@ -61,7 +61,8 @@ class DetailBlogView(View):
             'blog':blog,
             'categories':categories,
             'comments':comments,
-            'form':form
+            'form':form,
+            'can_like': blog.can_like(request)
         }
         return render(request, 'blog/detail.html', context=context)
     

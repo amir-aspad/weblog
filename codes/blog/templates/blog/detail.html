@@ -8,70 +8,103 @@
     <div class="col-12">
         <hr class="tm-hr-primary tm-mb-55">
         <!-- Video player 1422x800 -->
-        <img width="954" src="{{blog.baner.url}}" controls class="tm-mb-40">
+        <img style="width: 100%;" src="{{blog.baner.url}}" controls class="tm-mb-40">
     </div>
 </div>
 <div class="row tm-row">
     <div class="col-lg-8 tm-post-col">
-        <div class="tm-post-full">                    
+        <div class="tm-post-full">
             <div class="mb-4">
-                <h2 class="pt-2 tm-color-primary tm-post-title">{{blog.title}}</h2>
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <h2 class="pt-2 tm-color-primary tm-post-title">{{blog.title}}</h2>
+
+                    <div class="d-flex justify-content-between align-items-center flex-wrap ">
+
+                        <svg class="favorite" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                        </svg>
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+                        </svg> -->
+                        <div class="like">
+                            {% if can_like %}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                            </svg>
+                            {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+                            </svg>
+                            {% endif %}
+                            <span>{{blog.like_count}}</span>
+                        </div>
+                    </div>
+                </div>
                 <p class="tm-mb-40">creaed at: {{blog.created|date:'Y/m/d'}}<br>
-                last time updated: {{blog.updated|date:'Y/m/d'}}<br>
-                posted by {{blog.author.profile.full_name}}
+                    last time updated: {{blog.updated|date:'Y/m/d'}}<br>
+                    posted by {{blog.author.profile.full_name}}
                 </p>
                 <p>{{blog.text}}</p>
                 <span>Category: </span>
                 <span class="tm-color-primary">
-                {% for cat in blog.cates.all %}
+                    {% for cat in blog.cates.all %}
                     <span class="category category-detail tm-color-primary">{{cat.title}}</span>
-                {% endfor %}
+                    {% endfor %}
                 </span>
             </div>
-            
+
             <!-- Comments -->
             <div>
                 <h2 class="tm-color-primary tm-post-title">Comments</h2>
                 <hr class="tm-hr-primary tm-mb-45">
                 {% for comment in comments %}
-                    <div class="tm-comment tm-mb-45">
+                <div class="tm-comment tm-mb-45">
+                    <figure class="tm-comment-figure">
+                        <img src="{{comment.user.profile.profile.url}}" alt="Image"
+                            class="mb-2 rounded-circle img-thumbnail">
+                        <figcaption class="tm-color-primary text-center">{{comment.user.profile.full_name}}</figcaption>
+                    </figure>
+                    <div>
+                        <p>{{comment.text}}</p>
+                        <div class="d-flex justify-content-between">
+                            <!-- <a href="#" class="tm-color-primary">REPLY</a> -->
+                            <span class="tm-color-primary">{{blog.created|date:'Y/m/d'}}</span>
+                        </div>
+                    </div>
+                </div>
+                {% for reply in comment.reply_comments %}
+                <div class="tm-comment-reply tm-mb-45">
+                    <div class="tm-comment">
                         <figure class="tm-comment-figure">
-                            <img src="{{comment.user.profile.profile.url}}" alt="Image" class="mb-2 rounded-circle img-thumbnail">
-                            <figcaption class="tm-color-primary text-center">{{comment.user.profile.full_name}}</figcaption>
+                            <img src="{{reply.user.profile.profile.url}}" alt="Image"
+                                class="mb-2 rounded-circle img-thumbnail">
+                            <figcaption class="tm-color-primary text-center">{{reply.user.profile.full_name}}
+                            </figcaption>
                         </figure>
-                        <div>
-                            <p>{{comment.text}}</p>
-                            <div class="d-flex justify-content-between">
-                                <!-- <a href="#" class="tm-color-primary">REPLY</a> -->
-                                <span class="tm-color-primary">{{blog.created|date:'Y/m/d'}}</span>
-                            </div>                                                 
-                        </div>                                
+                        <p>{{reply.text}}</p>
                     </div>
-                    {% for reply in comment.reply_comments %}
-                    <div class="tm-comment-reply tm-mb-45">
-                        <div class="tm-comment">
-                            <figure class="tm-comment-figure">
-                                <img src="{{reply.user.profile.profile.url}}" alt="Image" class="mb-2 rounded-circle img-thumbnail">
-                                <figcaption class="tm-color-primary text-center">{{reply.user.profile.full_name}}</figcaption>    
-                            </figure>
-                            <p>{{reply.text}}</p>
-                        </div>                                
-                        <span class="d-block text-right tm-color-primary">{{reply.created|date:'Y/m/d'}}</span>
-                    </div>
-                    {% endfor %}
-                    <hr>
+                    <span class="d-block text-right tm-color-primary">{{reply.created|date:'Y/m/d'}}</span>
+                </div>
+                {% endfor %}
+                <hr>
                 {% empty %}
                 <p class="alert alert-danger">no comment found</p>
                 {% endfor %}
                 {% if request.user.is_authenticated %}
-                <form action="{% url 'blog:create_comment' blog.slug %}" method="post" class="col-12 tm-color-secondary mb-5 tm-comment-form">
+                <form action="{% url 'blog:create_comment' blog.slug %}" method="post"
+                    class="col-12 tm-color-secondary mb-5 tm-comment-form">
                     {% csrf_token %}
                     {{form}}
                     <input type="submit" value="send" class="tm-btn tm-btn-primary tm-btn-small mt-2">
                 </form>
                 {% else %}
                 <div class="alert alert-danger">for send comment. you should login first</div>
-                {% endif %}                  
+                {% endif %}
             </div>
         </div>
     </div>
@@ -81,7 +114,8 @@
             <h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
             <ul class="tm-mb-75 pl-5 tm-category-list">
                 {% for cat in categories %}
-                <li><a href="{% url 'blog:blog_all' %}?category={{cat.slug}}" class="tm-color-primary">{{cat.title}}</a></li>
+                <li><a href="{% url 'blog:blog_all' %}?category={{cat.slug}}" class="tm-color-primary">{{cat.title}}</a>
+                </li>
                 {% endfor %}
             </ul>
             <hr class="mb-3 tm-hr-primary">
@@ -96,8 +130,8 @@
             {% empty %}
             <p class="alert alert-danger">can not find related blog</p>
             {% endfor %}
-        </div>                    
+        </div>
     </aside>
 </div>
-    
+
 {% endblock %}
