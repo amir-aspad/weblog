@@ -31,7 +31,7 @@ class UserCreateForm(forms.ModelForm):
             user.save()
         return user
 
-    
+
 class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField(help_text='for change password use this <a href="../password">link</a>')
 
@@ -41,8 +41,14 @@ class UserChangeForm(forms.ModelForm):
 
 
 class LoginUserForm(forms.Form):
-    info = forms.CharField(label=_('شماره همراه، یوزر نیم یا ایمیل'))
-    password = forms.CharField(label=_('پسورد'), widget=forms.PasswordInput())
+    info = forms.CharField(
+        label=_('شماره همراه، یوزر نیم یا ایمیل'),
+        widget=forms.TextInput(attrs={'class':'form-control'})
+    )
+    password = forms.CharField(
+        label=_('پسورد'),
+        widget=forms.PasswordInput(attrs={'class':'form-control'})
+    )
 
 
 class RegisterUserForm(forms.Form):

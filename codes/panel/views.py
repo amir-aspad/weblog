@@ -1,13 +1,12 @@
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.utils import timezone
 from django.views import View
 
 # import from panel app
 from .forms import LoginUserForm, RegisterUserForm, VerifyPhoneForm
 from .models import User, OTP
+from .mixins import MyLoginRequiredMixin
 
 # import form module
 from extra_module.utils import send_verify_phone
@@ -65,7 +64,7 @@ class LoginUserView(View):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            messages.error(request, 'شما قبلا وارد شدید')
+            messages.error(request, 'you login before')
             return redirect('panel:home')
         return super().dispatch(request, *args, **kwargs)
 
@@ -82,24 +81,24 @@ class LoginUserView(View):
             user = authenticate(request, phone=cd['info'], password=cd['password'])
             if user is not None:
                 login(request, user)
-                messages.success(request, 'با موفقیت وارد شدید')
+                messages.success(request, 'login successfully')
 
                 next = request.GET.get('next', None)
                 return redirect(next if next else 'panel:home')
             else:
-                messages.error(request, "اطلاعات وارد شده درست نمی‌باشد")
+                messages.error(request, "your input info was wrong")
 
         return render(request, self.template_name, {'form':form})
     
 
-class LogoutUserView(LoginRequiredMixin, View):
+class LogoutUserView(MyLoginRequiredMixin, View):
     def get(self, request):
         #TODO: The address of this method will be determined later.
         logout(request)
-        return redirect('panel:')
+        return redirect('panel:home')
 
 
-class HomeView(LoginRequiredMixin, View):
+class HomeView(MyLoginRequiredMixin, View):
     def get(self, request):
         return render(request, 'panel/home.html')
     
@@ -138,13 +137,13 @@ class VerifyPhoneView(View):
                     # delete otp code
                     found_otp_code.delete()
                     
-                    messages.success(request, 'حساب شما با موفقیت ساخته شد')
+                    messages.success(request, 'your accounts was successfully created')
                     return redirect('panel:home')
                 
-                messages.error(request, 'کد تایید منقضی شده است')
+                messages.error(request, 'code was expired')
                 # delete otp code
                 found_otp_code.delete()
 
             except OTP.DoesNotExist:
-                messages.error(request, 'کد وارد شده اشتباه است')
+                messages.error(request, 'input code was wrong')
         return render(request, self.template_name, {'form':form})
