@@ -45,10 +45,15 @@ class Blog(BaseModle):
     config = ActiveManager()
 
     def can_add_to_favorite(self, request):
+        '''check user can add to favorite or no'''
+        if not request.user.is_authenticated:
+            return True
         return not self.bfavorites.filter(blog=self, user=request.user).exists()
 
     def can_like(self, request):
-        '''can user like blog or no'''
+        '''check user can like blog or no'''
+        if not request.user.is_authenticated:
+            return True
         return not self.blog_like.filter(user=request.user).exists()
     
     def like_count(self):

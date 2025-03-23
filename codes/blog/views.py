@@ -107,56 +107,30 @@ class CreateCommentReplyView(LoginRequiredMixin, View):
         return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
 
 
-class AddToFavoriteView(LoginRequiredMixin, View):
+class WorkOnFavoriteView(LoginRequiredMixin, View):
     def get(self, request, blog_id):
         blog = get_object_or_404(Blog, pk=blog_id)
 
-        if blog.can_add_to_favorite(request):
-            Favorite.objects.create(
-                user=request.user,
-                blog=blog
-            )
-            messages.success(request, 'added blog into your favorite')
-        else:
-            messages.error(request, 'this blog is exists in your favorite')
+        fav, created = Favorite.objects.get_or_create(
+            user=request.user, blog=blog
+        )
 
-        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
+        if not created:
+            fav.delete()
 
+        return redirect('blog:detail', slug=blog.slug)
 
-class RemoveToFavoriteView(LoginRequiredMixin, View):
-    def get(self, request, blog_id):
-        blog = get_object_or_404(Blog, pk=blog_id)
-
-        if not blog.can_add_to_favorite(request):
-            get_object_or_404(Favorite, user=request.user, blog=blog).delete()
-            messages.success(request, 'remove successfully from your favorite')
-        else:
-            messages.error(request, 'this blog is not in your favorite')
-
-        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
-    
 
 class LikeView(LoginRequiredMixin, View):
     def get(self, request, blog_id):
         blog = get_object_or_404(Blog, pk=blog_id)
 
-        if blog.can_like(request):
-            Like.objects.create(user=request.user, blog=blog)
-            messages.success(request, 'you like this blog successfully')
-        else:
-            messages.error(request, 'you like this blog before')
+        like, created = Like.objects.get_or_create(
+            blog=blog, user=request.user
+        )
+        
+        if not created:
+            like.delete()
 
-        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
+        return redirect('blog:detail', slug=blog.slug)
 
-
-class UnLikeView(LoginRequiredMixin, View):
-    def get(self, request, blog_id):
-        blog = get_object_or_404(Blog, pk=blog_id)
-
-        if not blog.can_like(request):
-            get_object_or_404(Like, user=request.user, blog=blog).delete()
-            messages.success(request, 'you unlike this blog successfully')
-        else:
-            messages.error(request, 'you unlike this blog before')
-
-        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
