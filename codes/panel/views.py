@@ -21,7 +21,7 @@ class RegisterUserView(View):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            messages.error(request, '')
+            messages.error(request, 'you login. so you can not register')
             return redirect('panel:home')
         return super().dispatch(request, *args, **kwargs)
 
@@ -54,7 +54,7 @@ class RegisterUserView(View):
 
             messages.success(request, 'با موفقیت برای شماره همراه شما کد تایید ارسال شد')
             return redirect('panel:verify_phone')           
-            
+        messages.error(request, ' Please correct the errors below')
         return render(request, self.template_name, {'form':form})
 
 

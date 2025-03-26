@@ -1,0 +1,15 @@
+.errorlist li{
+    list-style-type: none;
+    color: red !important;
+    font-size: 14px;
+}
+.label_and_error{
+    padding-top: 5px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 9px;
+}
+.label_form_side{
+    
+}

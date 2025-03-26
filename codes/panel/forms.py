@@ -6,6 +6,9 @@ from django import forms
 # import from panel app
 from .models import User
 
+# import forom module
+from extra_module.utils import phone_validataion
+
 
 class UserCreateForm(forms.ModelForm):
     password1 = forms.CharField(label=_('پسورد'), widget=forms.PasswordInput)
@@ -52,9 +55,18 @@ class LoginUserForm(forms.Form):
 
 
 class RegisterUserForm(forms.Form):
-    phone = forms.CharField(label=_("شماره همراه"), max_length=11)
-    password1 = forms.CharField(label=_("پسورد"), widget=forms.PasswordInput())
-    password2 = forms.CharField(label=_("تکرار پسورد"), widget=forms.PasswordInput())
+    phone = forms.CharField(
+        label=_("شماره همراه"), max_length=11, validators=[phone_validataion],
+        widget=forms.TextInput(attrs={'class':'form-control'})
+    )
+    password1 = forms.CharField(
+        label=_("پسورد"),      
+        widget=forms.PasswordInput(attrs={'class':'form-control'})
+    )
+    password2 = forms.CharField(
+        label=_("تکرار پسورد"),
+        widget=forms.PasswordInput(attrs={'class':'form-control'})
+    )
 
     def clean_password2(self):
         p1 = self.cleaned_data['password1']

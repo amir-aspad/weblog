@@ -1,20 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% if messages %}
-        {% for msg in messages %}
-            <p>{{msg}}</p>
+{% extends 'base.html' %}
+
+{% block title %} Register Page {% endblock %}
+
+{% block body %}
+
+<div class="mx-auto card mx-auto col-md-6 " style="padding: 0px;">
+    <div class="card-header">Register Form</div>
+    <form class="card-body needs-validation" action="" method="post">
+        {% for field in form %}
+            <div class="fieldWrapper">
+                <div class="label_and_error">
+                    <div class="label_form_side">
+                        {{ field.label_tag }}
+                    </div>
+                    {{ field.errors }}
+                </div>
+                <div>{{ field }}</div>
+            </div>
         {% endfor %}
-    {% endif %}
-    <form action="" method="post" novalidate>
-        {{form}}
         {% csrf_token %}
-        <input type="submit" value="register">
+        <div class="d-flex justify-content-center align-items-center">
+            <input type="submit" value="ثبت نام" class="btn btn-primary btn-lg mt-3">
+        </div>
+        <a class="d-block" href="{% url 'panel:login' %}">i alredy have an account</a>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
