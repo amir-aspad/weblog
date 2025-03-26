@@ -6,7 +6,7 @@ from django.views import View
 # import from panel app
 from .forms import LoginUserForm, RegisterUserForm, VerifyPhoneForm
 from .models import User, OTP
-from .mixins import MyLoginRequiredMixin
+from .mixins import MyLoginRequiredMixin, AnonymousRequiredMixin
 
 # import form module
 from extra_module.utils import send_verify_phone
@@ -15,15 +15,9 @@ from extra_module.utils import send_verify_phone
 from random import randint
 
 
-class RegisterUserView(View):
+class RegisterUserView(AnonymousRequiredMixin, View):
     template_name = 'panel/register.html'
     form_class = RegisterUserForm
-
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            messages.error(request, 'you login. so you can not register')
-            return redirect('panel:home')
-        return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
         form = self.form_class()
@@ -58,15 +52,9 @@ class RegisterUserView(View):
         return render(request, self.template_name, {'form':form})
 
 
-class LoginUserView(View):
+class LoginUserView(AnonymousRequiredMixin, View):
     template_name = 'panel/login.html'
     form_class = LoginUserForm
-
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            messages.error(request, 'you login before')
-            return redirect('panel:home')
-        return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
         form = self.form_class()
@@ -84,7 +72,7 @@ class LoginUserView(View):
                 messages.success(request, 'login successfully')
 
                 next = request.GET.get('next', None)
-                return redirect(next if next else 'panel:home')
+                return redirect(next if next else 'panel:home_panel')
             else:
                 messages.error(request, "your input info was wrong")
 
@@ -95,7 +83,7 @@ class LogoutUserView(MyLoginRequiredMixin, View):
     def get(self, request):
         #TODO: The address of this method will be determined later.
         logout(request)
-        return redirect('panel:home')
+        return redirect('panel:home_panel')
 
 
 class HomeView(MyLoginRequiredMixin, View):
@@ -103,7 +91,7 @@ class HomeView(MyLoginRequiredMixin, View):
         return render(request, 'panel/home.html')
     
 
-class VerifyPhoneView(View):
+class VerifyPhoneView(AnonymousRequiredMixin, View):
     form_class = VerifyPhoneForm
     template_name = 'panel/verify_phone.html'
 
@@ -115,35 +103,38 @@ class VerifyPhoneView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             user_code = form.cleaned_data['code']
-            info = request.session['user_registration_info']
+            self.info = request.session['user_registration_info']
 
             try:
-                found_otp_code = OTP.objects.get(code=user_code, phone=info['phone'])
+                found_otp_code = OTP.objects.get(code=user_code, phone=self.info['phone'])
 
                 if found_otp_code.is_alive():
                     # create user: user info in session object
                     user = User.objects.create(
-                        phone = info['phone'],
-                        password = info['password'],
+                        phone = self.info['phone'],
+                        password = self.info['password'],
                         verified_phone = True
                     )
 
                     # login registered user
-                    login(request, user)
+                    login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
-                    # delete user info from session
-                    del info
-
-                    # delete otp code
-                    found_otp_code.delete()
+                    self.clear_data(found_otp_code)
                     
                     messages.success(request, 'your accounts was successfully created')
-                    return redirect('panel:home')
+                    return redirect('panel:home_panel')
                 
                 messages.error(request, 'code was expired')
-                # delete otp code
-                found_otp_code.delete()
+                self.clear_data(found_otp_code)
 
             except OTP.DoesNotExist:
                 messages.error(request, 'input code was wrong')
         return render(request, self.template_name, {'form':form})
+    
+
+    def clear_data(self, otp):
+        '''create session and delete otp code'''
+        # clear session
+        del self.info
+        # delete otp code
+        otp.delete()

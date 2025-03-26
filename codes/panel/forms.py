@@ -87,4 +87,6 @@ class RegisterUserForm(forms.Form):
     
 
 class VerifyPhoneForm(forms.Form):
-    code = forms.CharField(label=_('کد تایید'))
+    code = forms.CharField(
+        label=_('کد تایید'),
+        widget=forms.TextInput(attrs={'class':'form-control'}))
