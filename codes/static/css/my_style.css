@@ -1,3 +1,23 @@
+.profile-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.image-container{
+    margin: 5px;
+    width: 300px;
+    /* border-radius: 20px; */
+    overflow: hidden;
+    /* border: 1px solid gray; */
+}
+.image-container img{
+    width: 100%;
+}
+.roler{
+    width: 50%;
+    margin: 5px auto;
+}
 .errorlist{
     list-style-type: none;
     color: red !important;

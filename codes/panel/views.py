@@ -83,7 +83,7 @@ class LogoutUserView(MyLoginRequiredMixin, View):
     def get(self, request):
         #TODO: The address of this method will be determined later.
         logout(request)
-        return redirect('panel:home_panel')
+        return redirect('blog:blog_all')
 
 
 class HomeView(MyLoginRequiredMixin, View):

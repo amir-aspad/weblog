@@ -45,7 +45,8 @@ class User(PermissionsMixin, AbstractBaseUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile = models.ImageField(_("پروفایل"), upload_to='user', blank=True, null=True)
+    profile = models.ImageField(_("پروفایل"), upload_to='user',
+        blank=True, null=True, default='user_default_profile.png')
     bio = models.TextField(_('توضیحات'), max_length=120, blank=True, null=True)
     first_name = models.CharField(_('نام'), max_length=30, blank=True, null=True)
     last_name = models.CharField(_('نام خانوادگی'), max_length=30, blank=True, null=True)
