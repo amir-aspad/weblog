@@ -251,14 +251,14 @@ ul {
 .tm-btn {
     display: inline-block;
     border-radius: 5px;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
 }
 
 .tm-btn-primary {    
     background-color: #0CC;
     color: white;  
-    padding: 8px 43px;
+    padding: 5px 35px;
     border: none;
 }
 

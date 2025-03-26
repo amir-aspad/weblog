@@ -5,7 +5,8 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('panel/', include('panel.urls', namespace='panel'))
+    path('panel/', include('panel.urls', namespace='panel')),
+    path('', include('blog.urls', namespace='blog')),
 ]
 
 if settings.DEBUG:

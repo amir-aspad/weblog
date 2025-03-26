@@ -1,4 +1,4 @@
-.errorlist li{
+.errorlist{
     list-style-type: none;
     color: red !important;
     font-size: 14px;
@@ -11,5 +11,65 @@
     gap: 9px;
 }
 .label_form_side{
-    
+
+}
+.category-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.category{
+    border: 1px solid rgb(185, 185, 185);
+    padding: 2px 5px;
+    border-radius: 15px;
+}
+.category-detail{
+    border-radius: 10px;
+    padding: 2px 6px !important;
+    font-size: 18px;
+    border-radius: 10px !important;
+}
+.new_paginator{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+.filter{
+    padding: 10px;
+}
+.filter p{
+    margin-bottom: 0px !important;
+    font-size: 20px;
+    line-height: 23px;
+}
+.parent-info{
+    display: flex;
+    gap: 5px;
+}
+.info{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.info svg{
+    width: 25px;
+    color: #999
+}
+.like, .like span{
+    color: red;
+}
+.like svg, .favorite{
+    width: 60px;
+}
+.like:hover svg{
+    cursor: pointer;
+    color: red;
+}
+.favorite:hover{
+    cursor: pointer;
+}
+.favorite{
+    color: #099;
 }
