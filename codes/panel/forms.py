@@ -3,6 +3,9 @@ from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django import forms
 
+# import from blog app
+from blog.models import Blog
+
 # import from panel app
 from .models import User, Profile
 
@@ -148,3 +151,15 @@ class ChangeBaseInfoForm(forms.ModelForm):
                 raise ValidationError('this username already exists')
         
         return username
+    
+
+class PostBlogForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = ('title', 'baner', 'text', 'cates')
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'form-control'}),
+            'text': forms.Textarea(attrs={'class':'form-control'}),
+            'baner': forms.FileInput(attrs={'class':'form-control'}),
+            'cates': forms.SelectMultiple(attrs={'class':'form-control'}),
+        }

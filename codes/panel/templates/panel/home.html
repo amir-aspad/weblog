@@ -14,7 +14,7 @@
         <div class="col-xl-8 d-flex justify-content-between align-items-center flex-wrap">
             <div class="col-md-6">
                 <p>Email validity status
-                    {% if request.user.verified_email %}
+                    {% if request.user.email_verified %}
                     <svg style="color: green" width="25px" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -29,7 +29,7 @@
                     {% endif %}
                 </p>
                 <p>Phone validity status
-                    {% if request.user.verified_phone %}
+                    {% if request.user.phone_verified %}
                     <svg style="color: green" width="25px" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -53,14 +53,19 @@
             </div>
         </div>
     </div>
-    <div class="mb-3">
-        <a href="{% url 'panel:change_info' %}" class="btn btn-primary">Change Base Info</a>
-        <a href="{% url 'panel:change_phone' %}" class="btn btn-primary">Change Phone</a>
-        <a href="{% url 'panel:change_email' %}" class="btn btn-primary">Change Email</a>
-        <a href="" class="btn btn-primary">Verify Phone</a>
-        <a href="" class="btn btn-primary">Verify Email</a>
+    <div class="my-3 d-flex f-wrap justify-content-between align-items-center">
+        <div>
+            <a href="{% url 'panel:change_info' %}" class="btn btn-primary">Change Base Info</a>
+            <a href="{% url 'panel:change_phone' %}" class="btn btn-primary">Change Phone</a>
+            <a href="{% url 'panel:change_email' %}" class="btn btn-primary">Change Email</a>
+            <a href="" class="btn btn-primary">Verify Phone</a>
+            <a href="" class="btn btn-primary">Verify Email</a>
+        </div>
+        <div>
+            <a href="{% url 'panel:post_blog' %}" class="btn btn-success">Create Blog</a>
+        </div>
     </div>
     <hr class="roler">
-    <p>description: {{request.user.profile.bio|set_default}}</p>
+    <p>Description: {{request.user.profile.bio|set_default}}</p>
 </div>
 {% endblock %}

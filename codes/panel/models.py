@@ -23,8 +23,8 @@ class User(PermissionsMixin, AbstractBaseUser):
     is_active = models.BooleanField(default=True)
 
     # verify phone or email is boolean
-    verified_phone = models.BooleanField(default=False)
-    verified_email = models.BooleanField(default=False)
+    phone_verified = models.BooleanField(default=False)
+    email_verified = models.BooleanField(default=False)
 
     created = models.DateTimeField(auto_now_add=True)
 

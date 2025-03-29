@@ -19,7 +19,7 @@ class UserAdmin(BaseUserAdmin):
     fieldsets = (
         (None, {'fields': ('phone', 'username', 'email', 'password')}),
         ('permissions', {'fields': ('groups', 'user_permissions', 'is_admin', 'is_active', 'is_superuser')}),
-        ('verify', {'fields': ('verified_email', 'verified_phone')}),
+        ('verify', {'fields': ('email_verified', 'phone_verified')}),
         ('date', {'fields': ('last_login',)})
     )
     add_fieldsets = (

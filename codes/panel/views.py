@@ -1,15 +1,20 @@
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
+from django.utils.text import slugify
 from django.contrib import messages
 from django.views import View
+
+# import from blog app
+from blog.models import Category
 
 # import from panel app
 from .forms import (
     LoginUserForm, RegisterUserForm, ChangeBaseInfoForm,
-    VerifyPhoneForm, ChangeEmailForm, ChangePhoneForm
+    VerifyPhoneForm, ChangeEmailForm, ChangePhoneForm,
+    PostBlogForm
 )
 from .models import User, OTP
-from .mixins import MyLoginRequiredMixin, AnonymousRequiredMixin
+from .mixins import MyLoginRequiredMixin, AnonymousRequiredMixin, SendBlogPermissionMixin
 
 # import form module
 from extra_module.utils import send_verify_phone
@@ -116,7 +121,7 @@ class VerifyPhoneView(AnonymousRequiredMixin, View):
                     user = User.objects.create(
                         phone = self.info['phone'],
                         password = self.info['password'],
-                        verified_phone = True
+                        phone_verified = True
                     )
 
                     # login registered user
@@ -157,7 +162,7 @@ class ChangePhoneUser(MyLoginRequiredMixin, View):
         
         if form.is_valid():
             user = form.save(commit=False)
-            user.verified_phone = False
+            user.phone_verified = False
             user.save()
             messages.success(request, 'your phone succeesfully change')
             return redirect('panel:home_panel')
@@ -179,7 +184,7 @@ class ChangeEmailUser(MyLoginRequiredMixin, View):
         
         if form.is_valid():
             user = form.save(commit=False)
-            user.verified_email = False
+            user.email_verified = False
             user.save()
             messages.success(request, 'your email succeesfully change')
             return redirect('panel:home_panel')
@@ -205,5 +210,31 @@ class ChangeBaseInfoView(MyLoginRequiredMixin, View):
             user.user.save()
             messages.success(request, 'your info save successfully')
             return redirect('panel:home_panel')
+        messages.error(request, 'Please correct the errors below')
+        return render(request, self.template_name, {'form':form})
+
+
+class PostBlogView(MyLoginRequiredMixin, SendBlogPermissionMixin, View):
+    from_class = PostBlogForm
+    template_name = 'panel/post_blog.html'
+
+    def get(self, request):
+        form = self.from_class()
+        return render(request, self.template_name, {'form':form})
+    
+    def post(self, request):
+        form = self.from_class(request.POST, request.FILES)
+        if form.is_valid():
+            blog = form.save(commit=False)
+            blog.author = request.user
+            blog.slug = slugify(form.cleaned_data['title'], allow_unicode=True)
+
+            blog.save()
+            cates_title = [cate.title for cate in form.cleaned_data['cates']]
+            blog.cates.set(Category.objects.filter(title__in=cates_title))
+            
+            messages.success(request, 'your blog create successfully')
+            return redirect('panel:home_panel')
+
         messages.error(request, 'Please correct the errors below')
         return render(request, self.template_name, {'form':form})

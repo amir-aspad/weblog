@@ -35,6 +35,7 @@ class AllPostView(View):
             blogs = blogs.filter(
                 cates__in=find_category_by_cat
             )
+            self.category = find_category_by_cat[0].title if find_category_by_cat else None
         
         paginate = Paginator(blogs, per_page=6)
         blogs = paginate.get_page(self.page)
