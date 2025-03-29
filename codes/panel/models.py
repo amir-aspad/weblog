@@ -70,7 +70,7 @@ class Profile(models.Model):
 class OTP(models.Model):
     phone = models.CharField(_("شماره همراه"), max_length=11, unique=True)
     code = models.CharField(_("کد تایید"), max_length=6)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.phone

@@ -49,10 +49,10 @@ class RegisterUserView(AnonymousRequiredMixin, View):
             send_verify_phone(cd['phone'], code)
 
             # save code in otp model
-            found_otp = OTP.objects.filter(phone=cd['phone'])
-            if found_otp.exists():
-                found_otp.delete()
-            OTP.objects.create(phone=cd['phone'], code=code)
+            OTP.objects.update_or_create(
+                phone=cd['phone'],
+                defaults={'code': code}
+            )
 
             messages.success(request, 'با موفقیت برای شماره همراه شما کد تایید ارسال شد')
             return redirect('panel:verify_phone')           
@@ -91,6 +91,7 @@ class LogoutUserView(MyLoginRequiredMixin, View):
     def get(self, request):
         #TODO: The address of this method will be determined later.
         logout(request)
+        messages.success(request, 'logout successfully')
         return redirect('blog:blog_all')
 
 
@@ -161,9 +162,7 @@ class ChangePhoneUser(MyLoginRequiredMixin, View):
         form = self.form_class(request.POST, instance=request.user)
         
         if form.is_valid():
-            user = form.save(commit=False)
-            user.phone_verified = False
-            user.save()
+            form.save()
             messages.success(request, 'your phone succeesfully change')
             return redirect('panel:home_panel')
         messages.error(request, 'Please correct the errors below')
@@ -183,9 +182,7 @@ class ChangeEmailUser(MyLoginRequiredMixin, View):
         form = self.form_class(request.POST, instance=request.user)
         
         if form.is_valid():
-            user = form.save(commit=False)
-            user.email_verified = False
-            user.save()
+            form.save()
             messages.success(request, 'your email succeesfully change')
             return redirect('panel:home_panel')
         messages.error(request, 'Please correct the errors below')
@@ -204,10 +201,7 @@ class ChangeBaseInfoView(MyLoginRequiredMixin, View):
     def post(self, request):
         form = self.form_class(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.user.username = form.cleaned_data['username']
-            user.save()
-            user.user.save()
+            form.save(form.cleaned_data)
             messages.success(request, 'your info save successfully')
             return redirect('panel:home_panel')
         messages.error(request, 'Please correct the errors below')
@@ -225,14 +219,7 @@ class PostBlogView(MyLoginRequiredMixin, SendBlogPermissionMixin, View):
     def post(self, request):
         form = self.from_class(request.POST, request.FILES)
         if form.is_valid():
-            blog = form.save(commit=False)
-            blog.author = request.user
-            blog.slug = slugify(form.cleaned_data['title'], allow_unicode=True)
-
-            blog.save()
-            cates_title = [cate.title for cate in form.cleaned_data['cates']]
-            blog.cates.set(Category.objects.filter(title__in=cates_title))
-            
+            form.save(request, form.cleaned_data)
             messages.success(request, 'your blog create successfully')
             return redirect('panel:home_panel')
 

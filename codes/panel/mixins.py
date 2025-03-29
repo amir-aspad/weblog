@@ -25,9 +25,15 @@ class AnonymousRequiredMixin(View):
 class SendBlogPermissionMixin:
     def dispatch(self, request, *args, **kwargs):
         if not request.user.phone_verified:
-            messages.error(request, 'for send blog. your phone should verify')
+            messages.error(
+                request,
+                'For creating a blog, your phone should be verify'
+            )
             return redirect('panel:home_panel')
         if not request.user.username:
-            messages.error(request, 'for send blog. you should have username')
+            messages.error(
+                request,
+                f'For creating a blog, you should add your username. Do it <a href="{reverse("panel:change_info")}">here</a>'
+            )
             return redirect('panel:home_panel')
         return super().dispatch(request, *args, **kwargs)

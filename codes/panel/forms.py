@@ -1,10 +1,11 @@
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.utils.text import slugify
 from django import forms
 
 # import from blog app
-from blog.models import Blog
+from blog.models import Blog, Category
 
 # import from panel app
 from .models import User, Profile
@@ -106,6 +107,13 @@ class ChangePhoneForm(forms.ModelForm):
             raise ValidationError('this phone already exists')
 
         return phone
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.phone_verified = False
+        if commit:
+            user.save()
+        return user
     
 
 class ChangeEmailForm(forms.ModelForm):
@@ -125,6 +133,13 @@ class ChangeEmailForm(forms.ModelForm):
 
         return email
     
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email_verified = False
+        if commit:
+            user.save()
+        return user
+    
 
 class ChangeBaseInfoForm(forms.ModelForm):
     username = forms.CharField(
@@ -132,6 +147,7 @@ class ChangeBaseInfoForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'class':'form-control'})
     )
     profile = forms.ImageField(label=_("پروفایل"))
+    
     class Meta:
         model = Profile
         fields = ('profile', 'first_name', 'last_name', 'bio', 'username')
@@ -140,6 +156,14 @@ class ChangeBaseInfoForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),
             'bio': forms.Textarea(attrs={'class': 'form-control'}),
         }
+
+    def save(self, form, commit=True):
+        profile = super().save(commit=False)
+        profile.user.username = form['username']
+        if commit:
+            profile.save()
+            profile.user.save()
+        return profile
 
 
     def clean_username(self):
@@ -163,3 +187,15 @@ class PostBlogForm(forms.ModelForm):
             'baner': forms.FileInput(attrs={'class':'form-control'}),
             'cates': forms.SelectMultiple(attrs={'class':'form-control'}),
         }
+
+
+    def save(self, request, form, commit=True):
+        blog = super().save(commit=False)
+        blog.author = request.user
+        blog.slug = slugify(form['title'], allow_unicode=True)
+
+        if commit:
+            blog.save()
+        cates_title = [cate.title for cate in form['cates']]
+        blog.cates.set(Category.objects.filter(title__in=cates_title))
+        return blog
