@@ -61,31 +61,5 @@
     <p class="alert alert-danger col-12">there is no result found</p>
     {% endfor %}
 </div>
-<div class="tm-mt-100 tm-mb-75">
-    <div class="new_paginator">
-        <a href="{% if blogs.has_previous %}?page={{ blogs.previous_page_number }}{% endif %}" 
-            class="mb-2 tm-btn tm-btn-primary tm-prev-next {% if not blogs.has_previous %}disabled{% endif %}">
-                Prev
-        </a>
-        <nav class="tm-paging-nav d-inline-block">
-            <ul>
-                {% for num in blogs.paginator.page_range %}
-                {% if blogs.number == num %}
-                <li class="tm-paging-item active">
-                    <span class="mb-2 tm-btn tm-paging-link">{{ num }}</span>
-                </li>
-                {% else %}
-                <li class="tm-paging-item">
-                    <a href="?page={{ num }}" class="mb-2 tm-btn tm-paging-link">{{ num }}</a>
-                </li>
-                {% endif %}
-            {% endfor %}
-            </ul>
-        </nav>
-        <a href="{% if blogs.has_next %}?page={{ blogs.next_page_number }}{% endif %}" 
-        class="mb-2 tm-btn tm-btn-primary tm-prev-next {% if not blogs.has_next %}disabled{% endif %}">
-                Next
-        </a>
-    </div>                
-</div>
+{% include 'include/blog_paginator.html' %}
 {% endblock %}

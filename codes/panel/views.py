@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.utils.text import slugify
 from django.contrib import messages
 from django.views import View
+from django.core.paginator import Paginator
 
 # import from blog app
 from blog.models import Category
@@ -208,9 +209,9 @@ class ChangeBaseInfoView(MyLoginRequiredMixin, View):
         return render(request, self.template_name, {'form':form})
 
 
-class PostBlogView(MyLoginRequiredMixin, SendBlogPermissionMixin, View):
+class CreateBlogView(MyLoginRequiredMixin, SendBlogPermissionMixin, View):
     from_class = PostBlogForm
-    template_name = 'panel/post_blog.html'
+    template_name = 'panel/create_blog.html'
 
     def get(self, request):
         form = self.from_class()
@@ -225,3 +226,16 @@ class PostBlogView(MyLoginRequiredMixin, SendBlogPermissionMixin, View):
 
         messages.error(request, 'Please correct the errors below')
         return render(request, self.template_name, {'form':form})
+    
+
+class MyBlogView(MyLoginRequiredMixin, View):
+    template_name = 'panel/blog_list.html'
+    
+    def get(self, request):
+        page = request.GET.get('page', 1)
+
+        blogs = request.user.blogs.all()
+        paginate = Paginator(blogs, per_page=10)
+        blogs = paginate.get_page(page)
+
+        return render(request, self.template_name, {'blogs':blogs})

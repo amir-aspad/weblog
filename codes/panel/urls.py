@@ -16,5 +16,6 @@ urlpatterns = [
     path('register/', views.RegisterUserView.as_view(), name='register'),
     path('verify/phone/', views.VerifyPhoneView.as_view(), name='verify_phone'),
     path('change/', include(change_info)),
-    path('blog/create/', views.PostBlogView.as_view(), name='post_blog'),
+    path('blog/create/', views.CreateBlogView.as_view(), name='post_blog'),
+    path('blog/', views.MyBlogView.as_view(), name='my_blog'),
 ]

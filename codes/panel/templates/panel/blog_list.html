@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} My Blog Listing Page {% endblock %}
+
+{% block body %}
+<h1 class="text-center mb-5">My Blog</h1>
+{% if blogs %}
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Published</th>
+            <th scope="col">Activity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for blog in blogs %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{blog.title}}</td>
+            <td>
+                <img style="width: 25px;" src="/static/admin/img/icon-{% if blog.is_active %}yes{% else %}no{% endif %}.svg" alt="">
+            </td>
+            <td>
+                <a href="" class="btn btn-danger">remove</a>
+                <a href="" class="btn btn-info">update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% include 'include/blog_paginator.html' %}
+{% else %}
+<p class="alert alert-danger">you have no blog</p>
+{% endif %}
+{% endblock %}

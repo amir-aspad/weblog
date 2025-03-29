@@ -13,37 +13,33 @@ from .forms import CreateCommentForm
 
 class AllPostView(View):
     template_name = 'blog/show_all.html'
-
-    def setup(self, request, *args, **kwargs):
-        self.page = request.GET.get('page', 1)
-        self.search = request.GET.get('q', None)
-        self.category = request.GET.get('category', None)
-
-        return super().setup(request, *args, **kwargs)
     
     def get(self, request):
+        page = request.GET.get('page', 1)
+        search = request.GET.get('q', None)
+        category = request.GET.get('category', None)
         blogs = Blog.config.all()
         
-        if self.search:
+        if search:
             blogs = blogs.filter(
-                Q(title__contains=self.search)|
-                Q(text__contains=self.search)
+                Q(title__contains=search)|
+                Q(text__contains=search)
             )
 
-        if self.category:
-            find_category_by_cat = Category.objects.filter(slug=self.category)
+        if category:
+            find_category_by_cat = Category.objects.filter(slug=category)
             blogs = blogs.filter(
                 cates__in=find_category_by_cat
             )
-            self.category = find_category_by_cat[0].title if find_category_by_cat else None
+            category = find_category_by_cat[0].title if find_category_by_cat else None
         
         paginate = Paginator(blogs, per_page=6)
-        blogs = paginate.get_page(self.page)
+        blogs = paginate.get_page(page)
         
         data = {
             'blogs': blogs,
-            'search': self.search,
-            'category': self.category,
+            'search': search,
+            'category': category,
             'result_count': paginate.count,
         }
         return render(request, self.template_name, data)
