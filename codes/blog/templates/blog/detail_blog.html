@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} Detail Blog Page | {blog.title} {% endblock %}
+
+{% block body %}
+<h1>Detail blog post page</h1>
+<div class="row tm-row">
+    <div class="col-12">
+        <hr class="tm-hr-primary tm-mb-55">
+        <img style="width: 100%;" src="{{blog.baner.url}}" controls class="tm-mb-40">
+    </div>
+</div>
+<div class="row tm-row">
+    <div class="col-lg-8 tm-post-col">
+        <div class="tm-post-full">
+            <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <h2 class="pt-2 tm-color-primary tm-post-title">{{blog.title}}</h2>
+                </div>
+                <p class="tm-mb-40">creaed at: {{blog.created|date:'Y/m/d'}}<br>
+                    last time updated: {{blog.updated|date:'Y/m/d'}}<br>
+                    posted by {{blog.author.profile.user_info}}
+                </p>
+                <p>{{blog.text}}</p>
+                <span>Category: </span>
+                <span class="tm-color-primary">
+                    {% for cat in blog.cates.all %}
+                    <span class="category category-detail tm-color-primary">{{cat.title}}</span>
+                    {% endfor %}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-between align-items-center my-5">
+    <div>
+        <a href="" class="btn btn-danger">Delete</a>
+    </div>
+    <div>
+        <a href="" class="btn btn-info">Update</a>
+        <a href="{% url 'panel:my_blog' %}" class="btn btn-info">My blog</a>
+    </div>
+</div>
+{% endblock %}

@@ -70,6 +70,9 @@ class Blog(BaseModle):
     
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'slug':self.slug})
+    
+    def get_panel_detail_blog_url(self):
+        return reverse('panel:detail_blog', kwargs={'blog_id':self.id})
 
 
     class Meta:

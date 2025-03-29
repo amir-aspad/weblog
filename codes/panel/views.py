@@ -1,12 +1,11 @@
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
-from django.shortcuts import render, redirect
-from django.utils.text import slugify
+from django.core.paginator import Paginator
 from django.contrib import messages
 from django.views import View
-from django.core.paginator import Paginator
 
 # import from blog app
-from blog.models import Category
+from blog.models import Blog
 
 # import from panel app
 from .forms import (
@@ -15,7 +14,10 @@ from .forms import (
     PostBlogForm
 )
 from .models import User, OTP
-from .mixins import MyLoginRequiredMixin, AnonymousRequiredMixin, SendBlogPermissionMixin
+from .mixins import (
+    MyLoginRequiredMixin, AnonymousRequiredMixin, SendBlogPermissionMixin,
+    OwnerBlogMixin
+)
 
 # import form module
 from extra_module.utils import send_verify_phone
@@ -211,7 +213,7 @@ class ChangeBaseInfoView(MyLoginRequiredMixin, View):
 
 class CreateBlogView(MyLoginRequiredMixin, SendBlogPermissionMixin, View):
     from_class = PostBlogForm
-    template_name = 'panel/create_blog.html'
+    template_name = 'blog/create_blog.html'
 
     def get(self, request):
         form = self.from_class()
@@ -229,7 +231,7 @@ class CreateBlogView(MyLoginRequiredMixin, SendBlogPermissionMixin, View):
     
 
 class MyBlogView(MyLoginRequiredMixin, View):
-    template_name = 'panel/blog_list.html'
+    template_name = 'blog/blog_list.html'
     
     def get(self, request):
         page = request.GET.get('page', 1)
@@ -239,3 +241,10 @@ class MyBlogView(MyLoginRequiredMixin, View):
         blogs = paginate.get_page(page)
 
         return render(request, self.template_name, {'blogs':blogs})
+    
+
+class DetailBlogView(MyLoginRequiredMixin, OwnerBlogMixin, View):
+    template_name = 'blog/detail_blog.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'blog':self.blog})

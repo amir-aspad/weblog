@@ -10,7 +10,6 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
-            <th scope="col">Published</th>
             <th scope="col">Activity</th>
         </tr>
     </thead>
@@ -18,13 +17,12 @@
         {% for blog in blogs %}
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
-            <td>{{blog.title}}</td>
             <td>
-                <img style="width: 25px;" src="/static/admin/img/icon-{% if blog.is_active %}yes{% else %}no{% endif %}.svg" alt="">
+                <a href="{{blog.get_panel_detail_blog_url}}">{{blog.title}}</a>
             </td>
             <td>
-                <a href="" class="btn btn-danger">remove</a>
-                <a href="" class="btn btn-info">update</a>
+                <a href="" class="btn btn-danger">Remove</a>
+                <a href="" class="btn btn-info">Update</a>
             </td>
         </tr>
         {% endfor %}

@@ -1,8 +1,11 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
 from django.urls import reverse
 from django.views import View
+
+# import from blog app
+from blog.models import Blog
 
 
 class MyLoginRequiredMixin(LoginRequiredMixin):
@@ -36,4 +39,13 @@ class SendBlogPermissionMixin:
                 f'For creating a blog, you should add your username. Do it <a href="{reverse("panel:change_info")}">here</a>'
             )
             return redirect('panel:home_panel')
+        return super().dispatch(request, *args, **kwargs)
+    
+
+class OwnerBlogMixin:
+    def dispatch(self, request, *args, **kwargs):
+        self.blog = get_object_or_404(Blog, pk=kwargs['blog_id'])
+        if self.blog.author != request.user:
+            messages.error(request, 'you have no access to this blog')
+            return redirect('panel:my_blog')
         return super().dispatch(request, *args, **kwargs)
