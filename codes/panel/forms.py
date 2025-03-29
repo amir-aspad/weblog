@@ -4,10 +4,10 @@ from django.core.exceptions import ValidationError
 from django import forms
 
 # import from panel app
-from .models import User
+from .models import User, Profile
 
 # import forom module
-from extra_module.utils import phone_validataion
+from extra_module.utils import phone_validataion, username_validation
 
 
 class UserCreateForm(forms.ModelForm):
@@ -45,26 +45,23 @@ class UserChangeForm(forms.ModelForm):
 
 class LoginUserForm(forms.Form):
     info = forms.CharField(
-        label=_('شماره همراه، یوزر نیم یا ایمیل'),
+        label=_('phone or username or email'),
         widget=forms.TextInput(attrs={'class':'form-control'})
     )
-    password = forms.CharField(
-        label=_('پسورد'),
-        widget=forms.PasswordInput(attrs={'class':'form-control'})
-    )
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
 
 
 class RegisterUserForm(forms.Form):
     phone = forms.CharField(
-        label=_("شماره همراه"), max_length=11, validators=[phone_validataion],
+        max_length=11, validators=[phone_validataion],
         widget=forms.TextInput(attrs={'class':'form-control'})
     )
     password1 = forms.CharField(
-        label=_("پسورد"),      
+        label=_("password"),      
         widget=forms.PasswordInput(attrs={'class':'form-control'})
     )
     password2 = forms.CharField(
-        label=_("تکرار پسورد"),
+        label=_("password confirm"),
         widget=forms.PasswordInput(attrs={'class':'form-control'})
     )
 
@@ -87,6 +84,67 @@ class RegisterUserForm(forms.Form):
     
 
 class VerifyPhoneForm(forms.Form):
-    code = forms.CharField(
-        label=_('کد تایید'),
-        widget=forms.TextInput(attrs={'class':'form-control'}))
+    code = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    
+
+class ChangePhoneForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('phone',)
+        widgets = {
+            'phone':forms.TextInput(attrs={'class':'form-control'})
+        }
+
+
+    def clean_phone(self):
+        phone = self.cleaned_data['phone']
+
+        if User.objects.filter(phone=phone).exists():
+            raise ValidationError('this phone already exists')
+
+        return phone
+    
+
+class ChangeEmailForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email',)
+        widgets = {
+            'email':forms.EmailInput(attrs={'class':'form-control'})
+        }
+
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+
+        if User.objects.filter(email=email).exists():
+            raise ValidationError('this email already exists')
+
+        return email
+    
+
+class ChangeBaseInfoForm(forms.ModelForm):
+    username = forms.CharField(
+        label=_("نام کاربری"), validators=[username_validation],
+        widget=forms.TextInput(attrs={'class':'form-control'})
+    )
+    profile = forms.ImageField(label=_("پروفایل"))
+    class Meta:
+        model = Profile
+        fields = ('profile', 'first_name', 'last_name', 'bio', 'username')
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        
+
+        if self.instance.user.username != username:
+            if User.objects.filter(username=username).exists():
+                raise ValidationError('this username already exists')
+        
+        return username

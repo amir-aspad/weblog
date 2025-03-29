@@ -4,7 +4,10 @@ from django.contrib import messages
 from django.views import View
 
 # import from panel app
-from .forms import LoginUserForm, RegisterUserForm, VerifyPhoneForm
+from .forms import (
+    LoginUserForm, RegisterUserForm, ChangeBaseInfoForm,
+    VerifyPhoneForm, ChangeEmailForm, ChangePhoneForm
+)
 from .models import User, OTP
 from .mixins import MyLoginRequiredMixin, AnonymousRequiredMixin
 
@@ -48,7 +51,7 @@ class RegisterUserView(AnonymousRequiredMixin, View):
 
             messages.success(request, 'با موفقیت برای شماره همراه شما کد تایید ارسال شد')
             return redirect('panel:verify_phone')           
-        messages.error(request, ' Please correct the errors below')
+        messages.error(request, 'Please correct the errors below')
         return render(request, self.template_name, {'form':form})
 
 
@@ -138,3 +141,69 @@ class VerifyPhoneView(AnonymousRequiredMixin, View):
         del self.info
         # delete otp code
         otp.delete()
+
+
+class ChangePhoneUser(MyLoginRequiredMixin, View):
+    template_name = 'panel/change_phone.html'
+    form_class = ChangePhoneForm
+
+    def get(self, request):
+        form = self.form_class(instance=request.user)
+        return render(request, self.template_name, {'form':form})
+    
+    
+    def post(self, request):
+        form = self.form_class(request.POST, instance=request.user)
+        
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.verified_phone = False
+            user.save()
+            messages.success(request, 'your phone succeesfully change')
+            return redirect('panel:home_panel')
+        messages.error(request, 'Please correct the errors below')
+        return render(request, self.template_name, {'form':form})
+    
+
+class ChangeEmailUser(MyLoginRequiredMixin, View):
+    template_name = 'panel/change_email.html'
+    form_class = ChangeEmailForm
+
+    def get(self, request):
+        form = self.form_class(instance=request.user)
+        return render(request, self.template_name, {'form':form})
+    
+
+    def post(self, request):
+        form = self.form_class(request.POST, instance=request.user)
+        
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.verified_email = False
+            user.save()
+            messages.success(request, 'your email succeesfully change')
+            return redirect('panel:home_panel')
+        messages.error(request, 'Please correct the errors below')
+        return render(request, self.template_name, {'form':form})
+    
+
+class ChangeBaseInfoView(MyLoginRequiredMixin, View):
+    template_name = 'panel/change_info.html'
+    form_class = ChangeBaseInfoForm
+
+    def get(self, request):
+        form = self.form_class(instance=request.user.profile, initial={'username':request.user.username})
+        return render(request, self.template_name, {'form':form})
+    
+    
+    def post(self, request):
+        form = self.form_class(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.user.username = form.cleaned_data['username']
+            user.save()
+            user.user.save()
+            messages.success(request, 'your info save successfully')
+            return redirect('panel:home_panel')
+        messages.error(request, 'Please correct the errors below')
+        return render(request, self.template_name, {'form':form})

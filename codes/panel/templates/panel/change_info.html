@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Change Info Page {% endblock %}
+
+{% block body %}
+<div class="mx-auto card mx-auto" style="padding: 0px;">
+    <div class="card-header">Change Info</div>
+    <form class="card-body d-flex justify-content-center align-items-center" style="flex-wrap: wrap;" action="" method="post" enctype="multipart/form-data">
+        {% if form.instance.profile %}
+        <div class="image-container mx-auto">
+            <img style="margin: 0px auto;" src="{{ form.instance.profile.url }}" alt="Profile Picture">
+        </div>
+        {% endif %}
+        {% for field in form %}
+        <div class="fieldWrapper col-md-6">
+            <div class="label_and_error">
+                <div class="label_form_side">
+                    {{ field.label_tag }}
+                </div>
+                {{ field.errors }}
+            </div>
+            <div>{{ field }}</div>
+        </div>
+        {% endfor %}
+        {% csrf_token %}
+        <div class="d-flex justify-content-center align-items-center">
+            <input type="submit" value="Change" class="btn btn-primary btn-lg mt-3">
+        </div>
+    </form>
+</div>
+{% endblock %}
+{% block footer %}{% endblock %}

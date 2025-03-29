@@ -42,7 +42,7 @@
                 </div>
                 <p class="tm-mb-40">creaed at: {{blog.created|date:'Y/m/d'}}<br>
                     last time updated: {{blog.updated|date:'Y/m/d'}}<br>
-                    posted by {{blog.author.profile.full_name}}
+                    posted by {{blog.author.profile.user_info}}
                 </p>
                 <p>{{blog.text}}</p>
                 <span>Category: </span>
@@ -62,7 +62,7 @@
                     <figure class="tm-comment-figure">
                         <img src="{{comment.user.profile.profile.url}}" alt="Image"
                             class="mb-2 rounded-circle img-thumbnail">
-                        <figcaption class="tm-color-primary text-center">{{comment.user.profile.full_name}}</figcaption>
+                        <figcaption class="tm-color-primary text-center">{{comment.user.profile.user_info}}</figcaption>
                     </figure>
                     <div>
                         <p>{{comment.text}}</p>
@@ -78,7 +78,7 @@
                         <figure class="tm-comment-figure">
                             <img src="{{reply.user.profile.profile.url}}" alt="Image"
                                 class="mb-2 rounded-circle img-thumbnail">
-                            <figcaption class="tm-color-primary text-center">{{reply.user.profile.full_name}}
+                            <figcaption class="tm-color-primary text-center">{{reply.user.profile.user_info}}
                             </figcaption>
                         </figure>
                         <p>{{reply.text}}</p>

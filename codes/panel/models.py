@@ -37,6 +37,9 @@ class User(PermissionsMixin, AbstractBaseUser):
     def is_staff(self):
         return self.is_admin
     
+    def get(self, key, default=None):
+        return self.data.get(key, default)
+    
 
     class Meta:
         verbose_name = 'کاربر'
@@ -51,10 +54,15 @@ class Profile(models.Model):
     first_name = models.CharField(_('نام'), max_length=30, blank=True, null=True)
     last_name = models.CharField(_('نام خانوادگی'), max_length=30, blank=True, null=True)
 
+        
     @property
     def full_name(self):
+        return f'{self.first_name} {self.last_name}'
+    
+    @property
+    def user_info(self):
         if self.first_name and self.last_name:
-            return f'{self.first_name} {self.last_name}'
+            return self.full_name
         else:
             return self.user.username
 
