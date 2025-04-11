@@ -383,7 +383,7 @@ a:hover {
 }
 
 a:hover figcaption { color: #056767; }
-.img-thumbnail { max-width: none; }
+.img-thumbnail { max-width: 100px; }
 .tm-about-pad { padding: 40px 35px; }
 .tm-person { max-width: 430px; }
 .tm-line-height-short { line-height: 1.8; }

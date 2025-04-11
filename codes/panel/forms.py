@@ -178,9 +178,10 @@ class ChangeBaseInfoForm(forms.ModelForm):
     
 
 class PostBlogForm(forms.ModelForm):
+    baner = forms.ImageField(label=_("بنر"))
     class Meta:
         model = Blog
-        fields = ('title', 'baner', 'text', 'cates')
+        fields = ('baner', 'title', 'text', 'cates')
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control'}),
             'text': forms.Textarea(attrs={'class':'form-control'}),
@@ -188,14 +189,32 @@ class PostBlogForm(forms.ModelForm):
             'cates': forms.SelectMultiple(attrs={'class':'form-control'}),
         }
 
+    def clean(self):
+        cleaned_data = super().clean()
+        title = cleaned_data.get('title')
+        text = cleaned_data.get('text')
+        baner = cleaned_data.get('baner').name
+        cates = cleaned_data.get('cates')
 
-    def save(self, request, form, commit=True):
+        if ((title == self.instance.title) and
+            (text == self.instance.text) and
+            (baner == self.instance.baner.name) and
+            (set(self.instance.cates.values_list('title', flat=True)) == {cate.title for cate in cates})
+        ):
+           raise ValidationError('Nothing change') 
+
+    def save(self, request, form, commit=True, update=False):
         blog = super().save(commit=False)
-        blog.author = request.user
+        
+        if not update:
+            blog.author = request.user
+        
         blog.slug = slugify(form['title'], allow_unicode=True)
-
+        
         if commit:
             blog.save()
+        
         cates_title = [cate.title for cate in form['cates']]
         blog.cates.set(Category.objects.filter(title__in=cates_title))
         return blog
+    

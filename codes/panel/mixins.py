@@ -2,7 +2,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
 from django.urls import reverse
-from django.views import View
 
 # import from blog app
 from blog.models import Blog
@@ -17,7 +16,7 @@ class MyLoginRequiredMixin(LoginRequiredMixin):
         return super().dispatch(request, *args, **kwargs)
     
 
-class AnonymousRequiredMixin(View):
+class AnonymousRequiredMixin:
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             messages.error(request, 'You are logged in so you cannot access that page.')

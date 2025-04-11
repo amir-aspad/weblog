@@ -21,8 +21,8 @@
                 <a href="{{blog.get_panel_detail_blog_url}}">{{blog.title}}</a>
             </td>
             <td>
-                <a href="" class="btn btn-danger">Remove</a>
-                <a href="" class="btn btn-info">Update</a>
+                <a href="{% url 'panel:delete_blog' blog.id %}" class="btn btn-danger">Remove</a>
+                <a href="{% url 'panel:update_blog' blog.id %}" class="btn btn-info">Update</a>
             </td>
         </tr>
         {% endfor %}
@@ -30,6 +30,6 @@
 </table>
 {% include 'include/blog_paginator.html' %}
 {% else %}
-<p class="alert alert-danger">you have no blog</p>
+<p class="alert alert-danger">you have no blog. for create blog use this <a href="{% url 'panel:create_blog' %}">link</a></p>
 {% endif %}
 {% endblock %}

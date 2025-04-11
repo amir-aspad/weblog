@@ -80,7 +80,7 @@ class CreateCommentView(LoginRequiredMixin, View):
             messages.success(request, 'comment send successfully after check it will be show in the template')
         else:
             messages.error(request, 'something went wrong')
-        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
+        return redirect('blog:detail', slug=blog.slug)
     
 
 class CreateCommentReplyView(LoginRequiredMixin, View):
@@ -101,7 +101,7 @@ class CreateCommentReplyView(LoginRequiredMixin, View):
             messages.success(request, 'your comment create successfully. after admin check it will show')
         else:
             messages.error(request, 'something went happen')
-        return redirect(reverse('blog:detail', kwargs={'slug':blog.slug}))
+        return redirect('blog:detail', slug=blog.slug)
 
 
 class WorkOnFavoriteView(LoginRequiredMixin, View):

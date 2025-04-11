@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.core.paginator import Paginator
 from django.contrib import messages
@@ -222,9 +222,9 @@ class CreateBlogView(MyLoginRequiredMixin, SendBlogPermissionMixin, View):
     def post(self, request):
         form = self.from_class(request.POST, request.FILES)
         if form.is_valid():
-            form.save(request, form.cleaned_data)
+            blog = form.save(request, form.cleaned_data)
             messages.success(request, 'your blog create successfully')
-            return redirect('panel:home_panel')
+            return redirect(blog.get_panel_detail_blog_url())
 
         messages.error(request, 'Please correct the errors below')
         return render(request, self.template_name, {'form':form})
@@ -236,7 +236,7 @@ class MyBlogView(MyLoginRequiredMixin, View):
     def get(self, request):
         page = request.GET.get('page', 1)
 
-        blogs = request.user.blogs.all()
+        blogs = Blog.config.filter(author=request.user)
         paginate = Paginator(blogs, per_page=10)
         blogs = paginate.get_page(page)
 
@@ -248,3 +248,31 @@ class DetailBlogView(MyLoginRequiredMixin, OwnerBlogMixin, View):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {'blog':self.blog})
+    
+
+class DeleteBlogView(MyLoginRequiredMixin, OwnerBlogMixin, View):
+    def get(self, request, *args, **kwargs):
+        self.blog.is_active = False
+        self.blog.save()
+        messages.success(request, 'successfully delete blog')
+        return redirect('panel:my_blog')
+
+
+class UpdateBlogView(MyLoginRequiredMixin, OwnerBlogMixin, View):
+    form_class = PostBlogForm
+    template_name = 'blog/update_blog.html'
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(instance=self.blog)
+        return render(request, self.template_name, {'form':form})
+    
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES, instance=self.blog)
+        
+        if form.is_valid():
+            form.save(request, form.cleaned_data, update=True)
+            messages.success(request, 'your blog updated successfully')
+            return redirect(self.blog.get_panel_detail_blog_url())
+ 
+        messages.error(request, 'Please correct the errors below')
+        return render(request, self.template_name, {'form':form})

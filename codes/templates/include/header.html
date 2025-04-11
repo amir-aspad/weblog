@@ -9,11 +9,11 @@
         </div>
         <nav class="tm-nav" id="tm-nav">
             <ul>
-                {% if request.user.is_authenticated %}
                 <li class="tm-nav-item {% if request.resolver_match.url_name == 'home_panel' %}active{% endif %}"><a href="{% url 'panel:home_panel' %}" class="tm-nav-link">
                         <i class="fa fa-user" aria-hidden="true"></i>
                         panel
                     </a></li>
+                {% if request.user.is_authenticated %}
                 <li class="tm-nav-item"><a href="{% url 'panel:logout' %}" class="tm-nav-link">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                         logout

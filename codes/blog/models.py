@@ -76,7 +76,7 @@ class Blog(BaseModle):
 
 
     class Meta:
-        ordering = ('-updated', '-created',)
+        ordering = ('-is_active', '-updated')
         verbose_name = 'بلاگ'
         verbose_name_plural = 'بلاگ ها'
 

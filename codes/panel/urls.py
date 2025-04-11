@@ -8,6 +8,13 @@ change_info = [
     path('email/', views.ChangeEmailUser.as_view(), name='change_email'),
     path('info/', views.ChangeBaseInfoView.as_view(), name='change_info'),
 ]
+blog_activity = [
+    path('', views.MyBlogView.as_view(), name='my_blog'),
+    path('create/', views.CreateBlogView.as_view(), name='create_blog'),
+    path('detail/<int:blog_id>', views.DetailBlogView.as_view(), name='detail_blog'),
+    path('delete/<int:blog_id>', views.DeleteBlogView.as_view(), name='delete_blog'),
+    path('update/<int:blog_id>', views.UpdateBlogView.as_view(), name='update_blog'),
+]
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home_panel'),
@@ -16,7 +23,5 @@ urlpatterns = [
     path('register/', views.RegisterUserView.as_view(), name='register'),
     path('verify/phone/', views.VerifyPhoneView.as_view(), name='verify_phone'),
     path('change/', include(change_info)),
-    path('blog/', views.MyBlogView.as_view(), name='my_blog'),
-    path('blog/create/', views.CreateBlogView.as_view(), name='post_blog'),
-    path('blog/detail/<int:blog_id>', views.DetailBlogView.as_view(), name='detail_blog'),
+    path('blog/', include(blog_activity)),
 ]

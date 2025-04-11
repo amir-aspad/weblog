@@ -34,11 +34,12 @@
 </div>
 <div class="d-flex justify-content-between align-items-center my-5">
     <div>
-        <a href="" class="btn btn-danger">Delete</a>
+        <a href="{% url 'panel:delete_blog' blog.id %}" class="btn btn-danger">Delete</a>
     </div>
     <div>
-        <a href="" class="btn btn-info">Update</a>
+        <a href="{% url 'panel:update_blog' blog.id %}" class="btn btn-info">Update</a>
         <a href="{% url 'panel:my_blog' %}" class="btn btn-info">My blog</a>
+        <a href="{% url 'blog:detail' blog.slug %}" class="btn btn-info">View in site</a>
     </div>
 </div>
 {% endblock %}
