@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.utils.text import slugify
 from django import forms
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 # import from blog app
 from blog.models import Blog, Category
@@ -184,7 +185,12 @@ class PostBlogForm(forms.ModelForm):
         fields = ('baner', 'title', 'text', 'cates')
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control'}),
-            'text': forms.Textarea(attrs={'class':'form-control'}),
+            'text': CKEditor5Widget(
+                attrs={
+                    'class':"form-control tm-color-secondary col-12 django_ckeditor_5",
+                    'rows':10, 'style':'width:100%'
+                }
+            ),
             'baner': forms.FileInput(attrs={'class':'form-control'}),
             'cates': forms.SelectMultiple(attrs={'class':'form-control'}),
         }

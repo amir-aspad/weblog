@@ -21,7 +21,7 @@
                     last time updated: {{blog.updated|date:'Y/m/d'}}<br>
                     posted by {{blog.author.profile.user_info}}
                 </p>
-                <p>{{blog.text}}</p>
+                <p>{{blog.text|safe}}</p>
                 <span>Category: </span>
                 <span class="tm-color-primary">
                     {% for cat in blog.cates.all %}

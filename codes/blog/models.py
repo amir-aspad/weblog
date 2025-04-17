@@ -3,6 +3,9 @@ from django.conf import settings
 from django.urls import reverse
 from django.db import models
 
+# thir party importing
+from django_ckeditor_5.fields import CKEditor5Field
+
 from .managers import ActiveManager, FristCommentManager
 
 class BaseModle(models.Model):
@@ -31,7 +34,7 @@ class Category(BaseModle):
 
 class Blog(BaseModle):
     baner = models.ImageField(_('بنر'), upload_to='blog')
-    text = models.TextField(_('متن'))
+    text = CKEditor5Field(_('متن'))
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, verbose_name=_('نویسنده'),  on_delete=models.CASCADE, related_name='blogs'
     )
@@ -39,7 +42,7 @@ class Blog(BaseModle):
     is_active = models.BooleanField(_('وضعیت انتشار'), default=True)
 
     created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now=True, verbose_name=_('تاریخ'))
     
     objects = models.Manager()
     config = ActiveManager()
@@ -102,7 +105,7 @@ class Follow(models.Model):
         settings.AUTH_USER_MODEL, verbose_name=_('دنبال شونده'),
         on_delete=models.CASCADE, related_name='followings'
     )
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, verbose_name=_('تاریخ'))
     
     def __str__(self):
         return f'user {self.follower.phone} follow {self.following.phone}'
@@ -119,9 +122,9 @@ class Comment(models.Model):
         related_name='rcomments',  blank=True, null=True
     )
     is_reply = models.BooleanField(_('وضعیت پاسخ'), default=False)
-    text = models.TextField(_('متن کامنت'), max_length=150)
+    text = CKEditor5Field(_('متن کامنت'), max_length=250, config_name='simple')
     is_active = models.BooleanField(_('وضعیت انتشار'), default=False)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, verbose_name=_('تاریخ'))
 
     objects = models.Manager()
     config = FristCommentManager()

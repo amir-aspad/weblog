@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %} Update Blog Page {% endblock %}
+{% block header %}{{ form.media }}{% endblock %}
 
 {% block body %}
 
@@ -18,7 +19,7 @@
         </div>
         {% endif %}
         {% for field in form %}
-            <div class="fieldWrapper col-md-6">
+            <div class="fieldWrapper col-md-12">
                 <div class="label_and_error">
                     <div class="label_form_side">
                         {{ field.label_tag }}

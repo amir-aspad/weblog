@@ -1,3 +1,22 @@
+.table {
+    border: 1px double #b3b3b3;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow-x:auto;
+}
+.table table{
+    width: 100%;
+    height: 100%;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+tr:hover{
+    background-color: #eeececb4;
+}
+th, td {
+    border: 1px solid #b6b6b6;
+}
 .profile-container{
     display: flex;
     justify-content: center;
