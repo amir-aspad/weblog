@@ -15,6 +15,9 @@ blog_activity = [
     path('delete/<int:blog_id>', views.DeleteBlogView.as_view(), name='delete_blog'),
     path('update/<int:blog_id>', views.UpdateBlogView.as_view(), name='update_blog'),
 ]
+favorite = [
+    path('', views.MyFavoriteBlogView.as_view(), name='favorite')
+]
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home_panel'),
@@ -24,4 +27,5 @@ urlpatterns = [
     path('verify/phone/', views.VerifyPhoneView.as_view(), name='verify_phone'),
     path('change/', include(change_info)),
     path('blog/', include(blog_activity)),
+    path('favorite/', include(favorite)),
 ]

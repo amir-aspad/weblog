@@ -236,7 +236,7 @@ class MyBlogView(MyLoginRequiredMixin, View):
     def get(self, request):
         page = request.GET.get('page', 1)
 
-        blogs = Blog.config.filter(author=request.user)
+        blogs = request.user.blogs.filter(is_active=True)
         paginate = Paginator(blogs, per_page=10)
         blogs = paginate.get_page(page)
 
@@ -276,3 +276,11 @@ class UpdateBlogView(MyLoginRequiredMixin, OwnerBlogMixin, View):
  
         messages.error(request, 'Please correct the errors below')
         return render(request, self.template_name, {'form':form})
+    
+
+class MyFavoriteBlogView(MyLoginRequiredMixin, View):
+    template_name = 'blog/listing_favorite.html'
+
+    def get(self, request):
+        favorites = request.user.favorites.filter(blog__is_active=True)
+        return render(request, self.template_name, {'favorites':favorites})

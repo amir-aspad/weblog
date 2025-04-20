@@ -106,7 +106,7 @@ class CreateCommentReplyView(LoginRequiredMixin, View):
 
 class WorkOnFavoriteView(LoginRequiredMixin, View):
     def get(self, request, blog_id):
-        blog = get_object_or_404(Blog, pk=blog_id)
+        blog = get_object_or_404(Blog, pk=blog_id, is_active=True)
 
         fav, created = Favorite.objects.get_or_create(
             user=request.user, blog=blog
@@ -115,7 +115,8 @@ class WorkOnFavoriteView(LoginRequiredMixin, View):
         if not created:
             fav.delete()
 
-        return redirect('blog:detail', slug=blog.slug)
+        previous_url = request.META.get('HTTP_REFERER', None)
+        return redirect(previous_url if previous_url else reverse('blog:detail', kwargs={'slug':blog.slug}))
 
 
 class LikeView(LoginRequiredMixin, View):

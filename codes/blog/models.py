@@ -51,7 +51,7 @@ class Blog(BaseModle):
         '''check user can add to favorite or no'''
         if not request.user.is_authenticated:
             return True
-        return not self.bfavorites.filter(blog=self, user=request.user).exists()
+        return not self.favorites.filter(blog=self, user=request.user).exists()
 
     def can_like(self, request):
         '''check user can like blog or no'''
@@ -144,8 +144,8 @@ class Comment(models.Model):
 
     
 class Favorite(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='ufavorites')
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='bfavorites')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='favorites')
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='favorites')
 
     def __str__(self):
         return f'{self.user} - {self.blog}'
