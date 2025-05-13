@@ -12,5 +12,5 @@ This is a simple blog project built with Python and Django. Users can sign up, l
 
 ### 1. Clone the Repository
 ```bash
-git clone git@github.com:amirAspad/weblog.git
+git clone git@github.com:amir-aspad/weblog.git
 cd weblog
